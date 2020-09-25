@@ -1,4 +1,4 @@
-# zoomer
+# Zoomba
 
 ## Project setup
 ```
