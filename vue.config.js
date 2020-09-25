@@ -8,4 +8,4 @@ module.exports = {
     open: 'Chrome',
     disableHostCheck: true
   }
-};
+}
