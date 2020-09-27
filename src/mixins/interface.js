@@ -21,3 +21,18 @@ export const logoAssetLocation = {
     }
   }
 }
+
+const _facebookUrl = 'https://www.facebook.com/'
+const _emailAddress = 'janowyeong@hotmail.com'
+
+export const websiteUrls = {
+  methods: {
+    launchFaceBookSite () {
+      window.open(_facebookUrl, '_blank')
+    },
+
+    launchEmail () {
+      window.location.href = `mailto:${_emailAddress}`
+    }
+  }
+}

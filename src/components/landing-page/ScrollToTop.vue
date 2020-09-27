@@ -1,14 +1,15 @@
 <template>
   <v-fab-transition>
     <v-btn
-      v-show="topOfThePage"
-      v-scroll="onScroll"
-      :color="landingPageButtonColour"
       bottom
       fab
       fixed
       large
       right
+      v-show="topOfThePage"
+      v-scroll="onScroll"
+      :color="landingPageButtonColour"
+      class="mb-10 mr-10"
       @click="scrollToTop"
     >
       <v-icon :color="landingPageTextColour">mdi-chevron-up</v-icon>
