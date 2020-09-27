@@ -1,8 +1,13 @@
+const _purple = '#2b222f'
+const _white = '#f3f5f5'
+const _orange = '#ffa924'
+
 export const palette = {
   data () {
     return {
-      landingPageBackgroundColour: '#2B222F',
-      landingPageTextColour: '#f3f5f5'
+      landingPageBackgroundColour: _purple,
+      landingPageTextColour: _white,
+      landingPageButtonColour: _orange
     }
   }
 }
