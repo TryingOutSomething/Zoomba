@@ -52,11 +52,11 @@ export default {
 
   methods: {
     scrollToContent () {
-      document.getElementById('content').scrollIntoView({ behavior: 'smooth' })
+      this.$vuetify.goTo('#content')
     },
 
     scrollToContact () {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+      this.$vuetify.goTo('#contact')
     }
   }
 }
