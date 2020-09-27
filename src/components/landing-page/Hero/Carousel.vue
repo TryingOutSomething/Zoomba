@@ -20,7 +20,7 @@
           hide-delimiter-background
           interval="10000"
         >
-          <v-carousel-item v-for="image in images" :key="image" :src="image.src">
+          <v-carousel-item v-for="(image, i) in images" :key="i" :src="image.src">
           </v-carousel-item>
         </v-carousel>
       </v-card>
@@ -48,6 +48,7 @@ export default {
   data () {
     return {
       images: [
+        { src: 'https://i.imgflip.com/18ps27.jpg' },
         { src: 'https://www.laconchakeywest.com/resourcefiles/mainimages/location-directions-of-key-west-hotel-top.jpg' },
         { src: 'https://i.ytimg.com/vi/le-qzrEHOxQ/maxresdefault.jpg' }
       ],

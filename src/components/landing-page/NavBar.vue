@@ -17,6 +17,7 @@
             :color="landingPageTextColour"
             class="text-capitalize mr-5 py-5 nav-bar-font"
             text
+            @click="scrollToContent"
           >
             About
           </v-btn>
@@ -24,6 +25,7 @@
             :color="landingPageTextColour"
             class="text-capitalize py-5 nav-bar-font"
             text
+            @click="scrollToContact"
           >
             Contact
           </v-btn>
@@ -48,8 +50,14 @@ export default {
   name: 'NavBar',
   mixins: [imageAssetLocations, palette],
 
-  data () {
-    return {}
+  methods: {
+    scrollToContent () {
+      document.getElementById('content').scrollIntoView({ behavior: 'smooth' })
+    },
+
+    scrollToContact () {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+    }
   }
 }
 </script>
