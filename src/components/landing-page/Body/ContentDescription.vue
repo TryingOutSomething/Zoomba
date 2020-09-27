@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { palette } from '@/mixins/commons'
+import { palette } from '@/mixins/interface'
 
 export default {
   name: 'ContentDescription',
@@ -65,7 +65,7 @@ export default {
       ],
 
       contentImage: {
-        src: 'https://cdn.vox-cdn.com/thumbor/iJdzJEbO0Uy_EFh680yd9s7njwg=/0x529:1267x1374/1200x800/filters:focal(0x529:1267x1374)/cdn.vox-cdn.com/uploads/chorus_image/image/49580341/h1.0.0.jpg',
+        src: 'https://media.giphy.com/media/FOHj4MpT2PLm8/giphy.gif',
         fixedWidth: 710,
         fixedHeight: 345
       }

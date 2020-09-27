@@ -1,6 +1,6 @@
 $sixteen-px-to-em: 1em;
 
-.nav-bar-font {
+.nav-bar-font, .white-border-text-btn {
   font-size: $sixteen-px-to-em !important;
 }
 
@@ -14,4 +14,8 @@ $sixteen-px-to-em: 1em;
 
 .download-button {
   letter-spacing: -1px;
+}
+
+.image-caption-subtitle {
+  font-size: 0.88em;
 }

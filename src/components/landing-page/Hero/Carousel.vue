@@ -20,7 +20,7 @@
           hide-delimiter-background
           interval="10000"
         >
-          <v-carousel-item v-for="(image, i) in images" :key="i" :src="image.src">
+          <v-carousel-item v-for="(image, i) in images" :key="i" :src="image.src" eager>
           </v-carousel-item>
         </v-carousel>
       </v-card>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { palette } from '@/mixins/commons'
+import { palette } from '@/mixins/interface'
 
 export default {
   name: 'Carousel',

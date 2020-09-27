@@ -5,10 +5,20 @@ $purple: #2B222F;
   background-color: $purple !important;
 }
 
-.hero-title, .hero-subtitle, .download-button {
+.hero-title,
+.hero-subtitle,
+.download-button,
+.contact-us-title,
+.submit-button-text,
+.image-caption,
+.image-caption-subtitle, {
   color: $white !important;
 }
 
 .content-body {
   background-color: $white !important;
+}
+
+.contact-us-title {
+  font-size: 2.25em;
 }

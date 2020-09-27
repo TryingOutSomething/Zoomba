@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { palette } from '@/mixins/commons'
+import { palette } from '@/mixins/interface'
 
 export default {
   name: 'Download',

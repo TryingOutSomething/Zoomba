@@ -44,11 +44,11 @@
 </template>
 
 <script>
-import { imageAssetLocations, palette } from '@/mixins/commons'
+import { logoAssetLocation, palette } from '@/mixins/interface'
 
 export default {
   name: 'NavBar',
-  mixins: [imageAssetLocations, palette],
+  mixins: [logoAssetLocation, palette],
 
   methods: {
     scrollToContent () {
