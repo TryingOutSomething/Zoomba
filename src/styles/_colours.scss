@@ -1,0 +1,28 @@
+$white: #f3f5f5;
+$purple: #2B222F;
+
+.hero-content {
+  background-color: $purple !important;
+}
+
+.hero-title,
+.hero-subtitle,
+.download-button,
+.contact-us-title,
+.submit-button-text,
+.image-caption,
+.image-caption-subtitle, {
+  color: $white !important;
+}
+
+.content-body {
+  background-color: $white !important;
+}
+
+.contact-us-title {
+  font-size: 2.25em;
+}
+
+.footer {
+  color: #616161 !important;
+}
