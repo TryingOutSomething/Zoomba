@@ -12,10 +12,14 @@ $sixteen-px-to-em: 1em;
   font-size: 2.25em;
 }
 
-.download-button {
+.download-button, .contact-us, .contact-email {
   letter-spacing: -1px;
 }
 
 .image-caption-subtitle, .footer {
   font-size: 0.88em;
+}
+
+.contact-us {
+  font-size: 1.88em;
 }

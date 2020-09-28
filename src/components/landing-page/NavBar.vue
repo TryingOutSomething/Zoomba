@@ -35,6 +35,7 @@
           :color="landingPageTextColour"
           class="text-capitalize py-5 px-7 white-border-text-btn"
           text
+          @click="redirectToLoginPage"
         >
           Login
         </v-btn>
@@ -57,6 +58,10 @@ export default {
 
     scrollToContact () {
       this.$vuetify.goTo('#contact')
+    },
+
+    redirectToLoginPage () {
+      this.$router.push('/login')
     }
   }
 }

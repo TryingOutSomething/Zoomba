@@ -26,3 +26,7 @@ $purple: #2B222F;
 .footer {
   color: #616161 !important;
 }
+
+.v-sheet.v-app-bar.v-toolbar:not(.v-sheet--outlined) {
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, .12) !important;
+}

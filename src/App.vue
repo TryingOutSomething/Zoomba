@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <main>
+    <v-main>
       <transition mode="out-in">
         <router-view/>
       </transition>
-    </main>
+    </v-main>
   </v-app>
 </template>
 
