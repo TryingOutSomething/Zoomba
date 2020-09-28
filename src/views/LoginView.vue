@@ -1,6 +1,6 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-container class="content-body" fluid fill-height>
+    <v-container class="" fluid fill-height>
       <v-col class="mt-12">
         <v-row align="center" justify="center">
           <v-img :src="zoombaLogoSloganUrl" max-height="200" max-width="500" contain/>

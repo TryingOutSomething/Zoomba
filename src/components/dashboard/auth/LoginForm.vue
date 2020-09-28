@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="0" :color="landingPageTextColour">
+  <v-card elevation="0">
     <v-row>
       <v-col>
         <v-text-field
@@ -46,12 +46,10 @@
 </template>
 
 <script>
-import { palette } from '@/mixins/interface'
 import { dashboardMainPageRoute } from '@/utils/urls'
 
 export default {
   name: 'LoginForm',
-  mixins: [palette],
 
   data () {
     return {

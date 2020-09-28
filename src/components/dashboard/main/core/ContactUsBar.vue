@@ -1,5 +1,5 @@
 <template>
-  <page-footer absolute>
+  <page-footer absolute color="white">
     <template v-slot:contact>
       <v-row>
         <v-col class="px-0">

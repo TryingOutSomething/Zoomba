@@ -5,7 +5,7 @@
     <base-content/>
     <base-contact/>
     <scroll-to-top/>
-    <page-footer>
+    <page-footer color="landingPageTextColour">
       <template v-slot:socials>
         <sns-icons/>
       </template>
@@ -21,6 +21,7 @@ import BaseContent from '@/components/landing-page/BaseContent'
 import BaseContact from '@/components/landing-page/BaseContact'
 import ScrollToTop from '@/components/landing-page/ScrollToTop'
 import SnsIcons from '@/components/common/SnsIcons'
+import { palette } from '@/mixins/interface'
 
 export default {
   name: 'LandingPage',
@@ -32,7 +33,8 @@ export default {
     BaseHero,
     NavBar,
     PageFooter
-  }
+  },
+  mixins: [palette]
 }
 </script>
 
