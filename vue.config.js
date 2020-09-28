@@ -7,5 +7,7 @@ module.exports = {
     port: 8080,
     // open: 'Chrome',
     disableHostCheck: true
-  }
+  },
+
+  publicPath: process.env.NODE_ENV === 'production' ? '/Zoomba/' : '/'
 }
