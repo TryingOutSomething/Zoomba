@@ -46,6 +46,7 @@
 
 <script>
 import { logoAssetLocation, palette } from '@/mixins/interface'
+import { loginRoute } from '@/utils/urls'
 
 export default {
   name: 'NavBar',
@@ -61,7 +62,7 @@ export default {
     },
 
     redirectToLoginPage () {
-      this.$router.push('/login')
+      this.$router.push(loginRoute)
     }
   }
 }

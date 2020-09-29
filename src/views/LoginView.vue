@@ -21,13 +21,29 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import { logoAssetLocation } from '@/mixins/interface'
 import ContactUsBar from '@/components/dashboard/main/core/ContactUsBar'
 
 export default {
   name: 'LoginView',
   components: { ContactUsBar },
-  mixins: [logoAssetLocation]
+  mixins: [logoAssetLocation],
+
+  created () {
+    this.changeToLoginBackgroundColour()
+  },
+
+  beforeDestroy () {
+    this.changeToMainBackgroundColour()
+  },
+
+  methods: {
+    ...mapMutations('app', [
+      'changeToLoginBackgroundColour',
+      'changeToMainBackgroundColour'
+    ])
+  }
 }
 </script>
 

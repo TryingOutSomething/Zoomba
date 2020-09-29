@@ -20,11 +20,11 @@
       </v-list-item>
     </v-col>
 
-    <v-divider />
+    <v-divider/>
 
     <v-container fluid class="pb-0">
       <v-col class="ml-2 py-0">
-        <sns-icons space-between="mr-2" />
+        <sns-icons space-between="mr-2"/>
         <p class="pt-2 mb-1 drawer-contact-us">Contact us at <u>ahpeiq@gmail.com</u></p>
         <p class="drawer-contact-us">Advance Software Engineering 20/21 TS3 TestyTest</p>
       </v-col>
@@ -35,6 +35,8 @@
 
 <script>
 import SnsIcons from '@/components/common/SnsIcons'
+import { loginRoute } from '@/utils/urls'
+
 export default {
   name: 'DrawerCompanyInfo',
   components: { SnsIcons },
@@ -46,8 +48,8 @@ export default {
   },
 
   methods: {
-    logout() {
-      window.alert('logout!')
+    logout () {
+      this.$router.push(loginRoute)
     }
   }
 }

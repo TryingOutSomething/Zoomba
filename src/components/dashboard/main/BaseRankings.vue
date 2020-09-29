@@ -1,29 +1,21 @@
 <template>
-  <v-container fluid>
-    <v-row align="center" justify="center">
-      <v-col sm="8">
-        <v-card elevation="0">
-          <v-container class="px-5">
-            <v-col>
-              <h1 class="content-body-header">Patient’s Game Score</h1>
-
-              <v-divider/>
-            </v-col>
-
-            <score-table/>
-          </v-container>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <content-body content-header="Patient’s Game Score">
+    <template v-slot:content>
+      <score-table/>
+    </template>
+  </content-body>
 </template>
 
 <script>
 import ScoreTable from '@/components/dashboard/main/Rankings/ScoreTable'
+import ContentBody from '@/components/dashboard/main/core/ContentBody'
 
 export default {
   name: 'BaseRankings',
-  components: { ScoreTable }
+  components: {
+    ContentBody,
+    ScoreTable
+  }
 }
 </script>
 

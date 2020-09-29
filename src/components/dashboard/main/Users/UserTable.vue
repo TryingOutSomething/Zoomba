@@ -1,12 +1,7 @@
 <template>
   <div>
-    <v-col sm="6" class="mt-12">
-      <v-select
-        v-model="selectedGame"
-        :items="games"
-        outlined
-        dense
-      />
+    <v-col sm="6" class="mt-12 pb-0">
+      <v-text-field label="Add Patient" outlined dense/>
     </v-col>
 
     <v-data-table
@@ -22,8 +17,8 @@
         >
           <td>{{ item.name }}</td>
 
-          <td class="text-end">
-            <span class="pr-3">{{ item.score }}</span>
+          <td class="text-center">
+            {{ item.email }}
           </td>
 
           <td class="text-end">
@@ -40,7 +35,7 @@
 import TableMenuOptions from '@/components/dashboard/main/Rankings/TableMenuOptions'
 
 export default {
-  name: 'ScoreTable',
+  name: 'UserTable',
   components: { TableMenuOptions },
   data () {
     return {
@@ -55,9 +50,9 @@ export default {
           sortable: false
         },
         {
-          text: 'Score',
-          align: 'end',
-          value: 'score',
+          text: 'Patient Email',
+          align: 'center',
+          value: 'email',
           sortable: false
         },
         {
@@ -72,12 +67,12 @@ export default {
 
       items: [
         {
-          name: 'test',
-          score: 0
+          name: 'testtt',
+          email: 'HideThePain@email.com'
         },
         {
           name: 'test',
-          score: 0
+          email: 'HideThePain@email.com'
         }
       ]
     }
