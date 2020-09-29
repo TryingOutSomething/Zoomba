@@ -35,6 +35,7 @@
           :color="landingPageTextColour"
           class="text-capitalize py-5 px-7 white-border-text-btn"
           text
+          @click="redirectToLoginPage"
         >
           Login
         </v-btn>
@@ -45,6 +46,7 @@
 
 <script>
 import { logoAssetLocation, palette } from '@/mixins/interface'
+import { loginRoute } from '@/utils/urls'
 
 export default {
   name: 'NavBar',
@@ -57,6 +59,10 @@ export default {
 
     scrollToContact () {
       this.$vuetify.goTo('#contact')
+    },
+
+    redirectToLoginPage () {
+      this.$router.push(loginRoute)
     }
   }
 }

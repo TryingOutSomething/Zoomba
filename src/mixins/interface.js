@@ -17,7 +17,8 @@ export const palette = {
 export const logoAssetLocation = {
   data () {
     return {
-      zoombaLogoUrl: require('@/assets/ZoombaLogo.png')
+      zoombaLogoUrl: require('@/assets/ZoombaLogo.png'),
+      zoombaLogoSloganUrl: require('@/assets/ZoombaSlogan.png')
     }
   }
 }
