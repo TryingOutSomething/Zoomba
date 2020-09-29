@@ -22,7 +22,7 @@
           </td>
 
           <td class="text-end">
-            <table-menu-options/>
+            <user-options/>
           </td>
         </tr>
         </tbody>
@@ -32,11 +32,11 @@
 </template>
 
 <script>
-import TableMenuOptions from '@/components/dashboard/main/Rankings/TableMenuOptions'
+import UserOptions from '@/components/dashboard/main/Users/UserOptions'
 
 export default {
   name: 'UserTable',
-  components: { TableMenuOptions },
+  components: { UserOptions },
   data () {
     return {
       games: ['Game 1', 'Game 2', 'Game 3'],

@@ -11,12 +11,7 @@
       </v-btn>
     </template>
 
-    <v-list>
-      <v-list-item>
-        <v-list-item-title class="table-menu-item">Delete User</v-list-item-title>
-      </v-list-item>
-    </v-list>
-
+    <slot name="options" />
   </v-menu>
 </template>
 <script>

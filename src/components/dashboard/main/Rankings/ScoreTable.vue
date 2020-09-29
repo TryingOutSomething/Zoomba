@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-col sm="6" class="mt-12">
+    <v-col sm="6" class="mt-12 pb-0">
       <v-select
         v-model="selectedGame"
         :items="games"
@@ -27,7 +27,7 @@
           </td>
 
           <td class="text-end">
-            <table-menu-options/>
+            <ranking-options />
           </td>
         </tr>
         </tbody>
@@ -37,11 +37,11 @@
 </template>
 
 <script>
-import TableMenuOptions from '@/components/dashboard/main/Rankings/TableMenuOptions'
 
+import RankingOptions from '@/components/dashboard/main/Rankings/RankingOptions'
 export default {
   name: 'ScoreTable',
-  components: { TableMenuOptions },
+  components: { RankingOptions },
   data () {
     return {
       games: ['Game 1', 'Game 2', 'Game 3'],
