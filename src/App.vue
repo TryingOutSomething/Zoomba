@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main class="content-body">
       <transition mode="out-in">
         <router-view/>
       </transition>

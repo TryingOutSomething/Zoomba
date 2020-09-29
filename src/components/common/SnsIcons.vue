@@ -2,7 +2,7 @@
   <div>
     <v-icon
       :color="iconColour"
-      class="mr-5"
+      :class="spaceBetween"
       @click="launchFaceBookSite"
     >
       mdi-facebook
@@ -27,6 +27,11 @@ export default {
     iconColour: {
       type: String,
       default: '#000000'
+    },
+
+    spaceBetween: {
+      type: String,
+      default: 'mr-5'
     }
   }
 }
