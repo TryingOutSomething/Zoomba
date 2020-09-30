@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-col sm="6" class="mt-12 pb-0">
+    <v-col sm="6" md="5" lg="5" xl="3" class="mt-12 pb-0">
       <v-select
         v-model="selectedGame"
         :items="games"
