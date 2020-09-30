@@ -6,6 +6,7 @@
           label="Email Address"
           clear-icon="mdi-close-circle"
           clearable
+          v-model="email"
         />
       </v-col>
     </v-row>
@@ -15,6 +16,8 @@
         <v-text-field
           label="Password"
           :type="showPassword? 'text' : 'password'"
+          v-model="password"
+          @keydown.enter="login"
         >
           <template v-slot:append>
             <v-btn
@@ -47,6 +50,7 @@
 
 <script>
 import { dashboardMainPageRoute } from '@/utils/urls'
+import { authenticateUser } from '@/services/firebase'
 
 export default {
   name: 'LoginForm',
@@ -54,7 +58,10 @@ export default {
   data () {
     return {
       showPassword: false,
-      iconButtonColour: '#868686'
+      iconButtonColour: '#868686',
+
+      email: '',
+      password: ''
     }
   },
 
@@ -66,9 +73,9 @@ export default {
 
   methods: {
     login () {
-      // validate
-
-      this.$router.push(dashboardMainPageRoute)
+      authenticateUser(this.email, this.password)
+        .then(() => this.$router.push(dashboardMainPageRoute))
+        .catch(err => window.alert(err))
     }
   }
 }

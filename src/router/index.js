@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import paths from './paths'
+import { checkIfUserIsAuthorized } from '@/utils/routeGuards'
 
 Vue.use(VueRouter)
 
@@ -22,5 +23,7 @@ const router = new VueRouter({
     }
   }
 })
+
+router.beforeEach(checkIfUserIsAuthorized)
 
 export default router
