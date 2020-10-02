@@ -70,6 +70,4 @@ export const deletePatient = async (patientId) => {
   }
 }
 
-export const getGameRankings = (game) => {
-  return firestore.collection(game).orderBy(_DEFAULT_ORDER_BY)
-}
+export const getGameRankings = (game) => firestore.collection(game).orderBy(_DEFAULT_ORDER_BY)
