@@ -44,7 +44,7 @@
 <script>
 import { inputValidators } from '@/mixins/validators'
 import { isIncompleteRegistrationForm } from '@/utils/validation'
-import { createUser } from '@/services/firebase'
+import { createPatient } from '@/services/firebase'
 
 export default {
   name: 'AddPatient',
@@ -77,22 +77,22 @@ export default {
   },
 
   methods: {
-    registerPatient () {
+    async registerPatient () {
       if (this.isInvalidForm()) {
         return
       }
 
-      this.isLoading = true
+      try {
+        this.isLoading = true
 
-      createUser(this.email, this.name)
-        .then(() => {
-          window.alert('User created successfully!')
-          this.closeModal()
-        })
-        .catch(err => {
-          this.isLoading = false
-          window.alert(err)
-        })
+        await createPatient(this.email, this.name)
+
+        window.alert('User created successfully!')
+        this.closeModal()
+      } catch (err) {
+        this.isLoading = false
+        window.alert(err)
+      }
     },
 
     closeModal () {
