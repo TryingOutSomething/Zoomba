@@ -1,6 +1,8 @@
-import { authenticator } from '@/plugins/firebase'
+import { authenticator, firestore, Timestamp } from '@/plugins/firebase'
 
 const _DEFAULT_PASSWORD = '******'
+const _USER_COLLECTION = 'users'
+const _DEFAULT_ORDER_BY = 'score'
 
 export const authenticateUser = (email, password) => {
   return new Promise((resolve, reject) => {
@@ -18,23 +20,56 @@ export const logoutUser = () => {
   })
 }
 
-const _addDisplayNameToUser = async (user, displayName) => {
+const _addDisplayNameToPatient = async (user, displayName) => {
   try {
-    const response = await user.updateProfile({ displayName })
-
-    return response.user
+    await user.updateProfile({ displayName })
   } catch (err) {
     return err
   }
 }
 
-export const createUser = async (email, displayName) => {
+const _insertPatientRecordIntoDb = async (patientInfo) => {
+  const { email, displayName } = patientInfo
+
+  try {
+    const result = await firestore.collection(_USER_COLLECTION).add({
+      email,
+      name: displayName,
+      createdAt: Timestamp.now()
+    })
+
+    return result.id
+  } catch (err) {
+    return err.message
+  }
+}
+
+export const createPatient = async (email, displayName) => {
   try {
     const response = await authenticator.createUserWithEmailAndPassword(email, _DEFAULT_PASSWORD)
 
     const { user } = response
-    return await _addDisplayNameToUser(user, displayName)
+
+    await _addDisplayNameToPatient(user, displayName)
+    return await _insertPatientRecordIntoDb({
+      email,
+      displayName
+    })
   } catch (err) {
     return err.message
   }
+}
+
+export const getAllPatients = () => firestore.collection('users')
+
+export const deletePatient = async (patientId) => {
+  try {
+    await firestore.collection(_USER_COLLECTION).doc(patientId).delete()
+  } catch (err) {
+    return err.message
+  }
+}
+
+export const getGameRankings = (game) => {
+  return firestore.collection(game).orderBy(_DEFAULT_ORDER_BY)
 }

@@ -6,28 +6,29 @@
         :items="games"
         outlined
         dense
+        @change="getDataFirestore"
       />
     </v-col>
 
     <v-data-table
       class="px-3"
       :headers="tableHeaders"
-      :items="items"
+      :items="users"
     >
-      <template v-slot:body="{ items }">
+      <template v-slot:body="{ items: users }">
         <tbody>
         <tr
-          v-for="(item, i) in items"
+          v-for="(user, i) in users"
           :key="i"
         >
-          <td>{{ item.name }}</td>
+          <td>{{ user.name }}</td>
 
-          <td class="text-end">
-            <span class="pr-3">{{ item.score }}</span>
+          <td class="text-center">
+            <span>{{ user.score }}</span>
           </td>
 
           <td class="text-end">
-            <ranking-options />
+            <ranking-options/>
           </td>
         </tr>
         </tbody>
@@ -37,11 +38,13 @@
 </template>
 
 <script>
-
 import RankingOptions from '@/components/dashboard/main/Rankings/RankingOptions'
+import { getGameRankings } from '@/services/firebase'
+
 export default {
   name: 'ScoreTable',
   components: { RankingOptions },
+
   data () {
     return {
       games: ['Game 1', 'Game 2', 'Game 3'],
@@ -56,7 +59,7 @@ export default {
         },
         {
           text: 'Score',
-          align: 'end',
+          align: 'center',
           value: 'score',
           sortable: false
         },
@@ -70,16 +73,22 @@ export default {
 
       isLoading: false,
 
-      items: [
-        {
-          name: 'test',
-          score: 0
-        },
-        {
-          name: 'test',
-          score: 0
+      users: []
+    }
+  },
+
+  created () {
+    this.getDataFirestore()
+  },
+
+  methods: {
+    getDataFirestore () {
+      getGameRankings(this.selectedGame).onSnapshot(querySnapShot => {
+        if (this.users.length > 0) {
+          this.users.splice(0, this.users.length)
         }
-      ]
+        querySnapShot.forEach(document => this.users.push(document.data()))
+      }, err => window.alert(err.message))
     }
   }
 }
