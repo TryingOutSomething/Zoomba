@@ -18,24 +18,23 @@ export const logoutUser = () => {
   })
 }
 
-const _addDisplayNameToUser = (user, displayName) => {
-  return new Promise((resolve, reject) => {
-    user.updateProfile({ displayName })
-      .then(() => resolve())
-      .catch(err => reject(err))
-  })
+const _addDisplayNameToUser = async (user, displayName) => {
+  try {
+    const response = await user.updateProfile({ displayName })
+
+    return response.user
+  } catch (err) {
+    return err
+  }
 }
 
-export const createUser = (email, displayName) => {
-  return new Promise((resolve, reject) => {
-    authenticator.createUserWithEmailAndPassword(email, _DEFAULT_PASSWORD)
-      .then(response => {
-        const { user } = response
+export const createUser = async (email, displayName) => {
+  try {
+    const response = await authenticator.createUserWithEmailAndPassword(email, _DEFAULT_PASSWORD)
 
-        _addDisplayNameToUser(user, displayName)
-          .then(() => resolve(user))
-          .catch(err => reject(err.message))
-      })
-      .catch(err => reject(err.message))
-  })
+    const { user } = response
+    return await _addDisplayNameToUser(user, displayName)
+  } catch (err) {
+    return err.message
+  }
 }
