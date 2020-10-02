@@ -77,7 +77,7 @@ export default {
       ],
 
       isLoading: false,
-      dialogIsOpen: false,
+      dialogIsOpen: true,
 
       items: [
         {

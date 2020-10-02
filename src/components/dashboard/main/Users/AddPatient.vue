@@ -9,30 +9,34 @@
         <v-icon @click="closeModal">mdi-close</v-icon>
       </v-card-title>
 
-      <v-col class="px-6">
-        <v-text-field
-          label="Patient Email"
-          :rules="[validation.required, validation.email]"
-          v-model="email"
-        />
+      <v-form ref="registerParticipant">
+        <v-col class="px-6">
+          <v-text-field
+            label="Patient Email"
+            :rules="[validation.required, validation.email]"
+            v-model="email"
+          />
 
-        <v-text-field
-          label="Patient Name"
-          :rules="[validation.required]"
-          v-model="name"
-        />
-      </v-col>
+          <v-text-field
+            label="Patient Name"
+            :rules="[validation.required]"
+            v-model="name"
+            @keydown.enter="registerPatient"
+          />
+        </v-col>
 
-      <v-card-actions class="pr-4 pb-7 pt-0">
-        <v-spacer/>
+        <v-card-actions class="pr-4 pb-7 pt-0">
+          <v-spacer/>
 
-        <v-btn
-          text
-          @click="registerPatient"
-        >
-          Add Patient
-        </v-btn>
-      </v-card-actions>
+          <v-btn
+            text
+            :loading="isLoading"
+            @click="registerPatient"
+          >
+            Add Patient
+          </v-btn>
+        </v-card-actions>
+      </v-form>
     </v-card>
   </v-dialog>
 </template>
@@ -40,6 +44,7 @@
 <script>
 import { inputValidators } from '@/mixins/validators'
 import { isIncompleteRegistrationForm } from '@/utils/validation'
+import { createUser } from '@/services/firebase'
 
 export default {
   name: 'AddPatient',
@@ -54,7 +59,8 @@ export default {
   data () {
     return {
       email: '',
-      name: ''
+      name: '',
+      isLoading: false
     }
   },
 
@@ -72,7 +78,21 @@ export default {
 
   methods: {
     registerPatient () {
-      this.closeModal()
+      if (this.isInvalidForm()) {
+        return
+      }
+
+      this.isLoading = true
+
+      createUser(this.email, this.name)
+        .then(() => {
+          window.alert('User created successfully!')
+          this.closeModal()
+        })
+        .catch(err => {
+          this.isLoading = false
+          window.alert(err)
+        })
     },
 
     closeModal () {
@@ -82,8 +102,7 @@ export default {
     },
 
     clearInput () {
-      this.email = ''
-      this.name = ''
+      this.$refs.registerParticipant.reset()
     },
 
     isInvalidForm () {
