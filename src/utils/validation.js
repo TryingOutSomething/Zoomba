@@ -19,3 +19,5 @@ export const isIncompleteFeedbackForm = (userInput) => {
 export const isIncompleteLoginForm = (email, password) => {
   return _isEmptyField(email) || _isEmptyField(password)
 }
+
+export const isIncompleteRegistrationForm = isIncompleteLoginForm
