@@ -10,8 +10,12 @@ export const requiredField = (value) => !_isEmptyField(value) || 'Field is requi
 
 export const validEmail = (email) => isValidEmail(email) || 'Invalid e-mail!'
 
-export const isIncompleteForm = (userInput) => {
+export const isIncompleteFeedbackForm = (userInput) => {
   const { name, email, description } = userInput
 
   return _isEmptyField(name) || _isEmptyField(email) || _isEmptyField(description)
+}
+
+export const isIncompleteLoginForm = (email, password) => {
+  return _isEmptyField(email) || _isEmptyField(password)
 }

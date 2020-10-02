@@ -5,6 +5,7 @@
         <v-text-field
           label="Email Address"
           clear-icon="mdi-close-circle"
+          :rules="[validation.required, validation.email]"
           clearable
           v-model="email"
         />
@@ -16,6 +17,7 @@
         <v-text-field
           label="Password"
           :type="showPassword? 'text' : 'password'"
+          :rules="[validation.required]"
           v-model="password"
           @keydown.enter="login"
         >
@@ -39,6 +41,7 @@
           color="primary"
           block
           depressed
+          :loading="isLoading"
           @click="login"
         >
           Log In
@@ -51,9 +54,12 @@
 <script>
 import { dashboardMainPageRoute } from '@/utils/urls'
 import { authenticateUser } from '@/services/firebase'
+import { isValidEmail, isIncompleteLoginForm } from '@/utils/validation'
+import { inputValidators } from '@/mixins/validators'
 
 export default {
   name: 'LoginForm',
+  mixins: [inputValidators],
 
   data () {
     return {
@@ -61,7 +67,8 @@ export default {
       iconButtonColour: '#868686',
 
       email: '',
-      password: ''
+      password: '',
+      isLoading: false
     }
   },
 
@@ -73,9 +80,36 @@ export default {
 
   methods: {
     login () {
+      if (this.isInvalidForm()) {
+        return
+      }
+
+      this.isLoading = true
+
       authenticateUser(this.email, this.password)
-        .then(() => this.$router.push(dashboardMainPageRoute))
-        .catch(err => window.alert(err))
+        .then(() => {
+          this.$router.push(dashboardMainPageRoute)
+        })
+        .catch(err => {
+          this.isLoading = false
+          window.alert(err)
+        })
+    },
+
+    isInvalidForm () {
+      if (isIncompleteLoginForm(this.email, this.password)) {
+        window.alert('Email or password are required!')
+
+        return true
+      }
+
+      if (!isValidEmail(this.email)) {
+        window.alert('Invalid Email!')
+
+        return true
+      }
+
+      return false
     }
   }
 }

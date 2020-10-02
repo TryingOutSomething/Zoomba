@@ -52,7 +52,7 @@
 <script>
 import { palette } from '@/mixins/interface'
 import { inputValidators } from '@/mixins/validators'
-import { isIncompleteForm, isValidEmail } from '@/utils/validation'
+import { isIncompleteFeedbackForm, isValidEmail } from '@/utils/validation'
 
 export default {
   name: 'ContactForm',
@@ -83,7 +83,7 @@ export default {
         description: this.description
       }
 
-      if (isIncompleteForm(userInput)) {
+      if (isIncompleteFeedbackForm(userInput)) {
         window.alert('Name, Email Address or Description is empty!')
         return true
       }

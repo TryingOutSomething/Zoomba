@@ -49,7 +49,7 @@ export default [
         path: DASHBOARD_PAGE_PATHS.RANKINGS,
         meta: {
           name: 'View Rankings',
-          requiresAuth: false
+          requiresAuth: true
         },
         component: () => import(/* webpackChunkName: "dashboard" */ '@/components/dashboard/main/BaseRankings')
       }

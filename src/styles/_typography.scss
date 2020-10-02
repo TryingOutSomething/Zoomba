@@ -1,7 +1,5 @@
-$sixteen-px-to-em: 1em;
-
 .nav-bar-font, .white-border-text-btn {
-  font-size: $sixteen-px-to-em !important;
+  font-size: 1em !important;
 }
 
 .hero-title {
@@ -18,6 +16,10 @@ $sixteen-px-to-em: 1em;
 .drawer-contact-us,
 .content-body-header {
   letter-spacing: -1px;
+}
+
+.add-patient-button {
+  letter-spacing: 0.5px;
 }
 
 .image-caption-subtitle, .footer, .user-role, .list-item-title, .table-menu-item {

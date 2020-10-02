@@ -4,7 +4,7 @@ import { authenticator } from '@/plugins/firebase'
 export const authenticateUser = (email, password) => {
   return new Promise((resolve, reject) => {
     authenticator.signInWithEmailAndPassword(email, password)
-      .then(user => resolve(user))
+      .then(response => resolve(response.user))
       .catch(err => reject(err.message))
   })
 }
