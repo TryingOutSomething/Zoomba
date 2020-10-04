@@ -1,20 +1,22 @@
 <template>
   <div>
-    <nav-bar/>
+    <base-nav-bar/>
     <base-hero/>
     <base-content/>
     <base-contact/>
     <scroll-to-top/>
     <page-footer color="landingPageTextColour">
       <template v-slot:socials>
-        <sns-icons/>
+        <v-row justify="end">
+          <sns-icons/>
+        </v-row>
       </template>
     </page-footer>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/landing-page/NavBar'
+import BaseNavBar from '@/components/landing-page/BaseNavBar'
 import PageFooter from '@/components/common/PageFooter'
 import BaseHero from '@/components/landing-page/BaseHero'
 import BaseContent from '@/components/landing-page/BaseContent'
@@ -31,7 +33,7 @@ export default {
     BaseContact,
     BaseContent,
     BaseHero,
-    NavBar,
+    BaseNavBar,
     PageFooter
   },
   mixins: [palette]

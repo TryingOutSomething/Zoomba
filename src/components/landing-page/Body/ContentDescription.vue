@@ -31,6 +31,7 @@
           :height="contentImage.fixedHeight"
           :src="contentImage.src"
           :width="contentImage.fixedWidth"
+          eager
         />
       </v-card>
     </v-row>
