@@ -2,6 +2,7 @@
   <v-container>
     <v-row align="center" justify="center">
       <v-btn
+        v-show="$vuetify.breakpoint.mdAndUp"
         :color="landingPageTextColour"
         class="mr-12"
         icon
@@ -11,21 +12,27 @@
         <v-icon size="70">mdi-chevron-left</v-icon>
 
       </v-btn>
-      <v-card class="mt-5" elevation="24" max-height="400" max-width="750">
-        <v-carousel
-          v-model="model"
-          :show-arrows="displayArrows"
-          cycle
-          height="400"
-          hide-delimiter-background
-          interval="10000"
-        >
-          <v-carousel-item v-for="(image, i) in images" :key="i" :src="image.src" eager>
-          </v-carousel-item>
-        </v-carousel>
-      </v-card>
+
+      <v-col class="mt-5" xl="5" lg="7" cols="11">
+        <v-row justify="center">
+          <v-card class="mt-5" elevation="24">
+            <v-carousel
+              v-model="model"
+              :show-arrows="displayArrows"
+              cycle
+              height="400"
+              hide-delimiter-background
+              interval="10000"
+            >
+              <v-carousel-item v-for="(image, i) in images" :key="i" :src="image.src" eager>
+              </v-carousel-item>
+            </v-carousel>
+          </v-card>
+        </v-row>
+      </v-col>
 
       <v-btn
+        v-show="$vuetify.breakpoint.mdAndUp"
         :color="landingPageTextColour"
         class="ml-12"
         icon

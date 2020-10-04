@@ -5,9 +5,14 @@
     <base-content/>
     <base-contact/>
     <scroll-to-top/>
+
     <page-footer color="landingPageTextColour">
       <template v-slot:socials>
-        <sns-icons/>
+        <v-col class="pr-0 py-0">
+          <v-row justify="end">
+            <sns-icons/>
+          </v-row>
+        </v-col>
       </template>
     </page-footer>
   </div>

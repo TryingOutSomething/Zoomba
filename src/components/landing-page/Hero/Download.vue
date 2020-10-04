@@ -1,6 +1,6 @@
 <template>
-  <v-row class="mt-12" justify="center">
-    <v-btn :color="landingPageButtonColour" class="py-9 px-12" x-large>
+  <v-row class="mt-12 mx-0" justify="center">
+    <v-btn :color="landingPageButtonColour" class="py-9 px-md-12 mx-0" x-large>
       <v-icon
         :color="landingPageTextColour"
         class="pl-12"
