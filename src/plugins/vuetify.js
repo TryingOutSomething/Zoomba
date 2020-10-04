@@ -5,7 +5,8 @@ import 'vuetify/dist/vuetify.min.css'
 Vue.use(Vuetify)
 
 const themeColours = {
-  primary: '#839EAF'
+  primary: '#839EAF',
+  error: '#ff3333'
 }
 
 export default new Vuetify({

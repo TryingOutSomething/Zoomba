@@ -9,7 +9,7 @@
         elevation="0"
         width="300"
       >
-        <v-row align="start">
+        <v-row align="start" class="mx-0">
           <v-icon :color="landingPageButtonColour" size="3em">{{ content.icon }}</v-icon>
 
           <v-col class="py-0 pl-2">

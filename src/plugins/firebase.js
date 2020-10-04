@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import { firestorePlugin } from 'vuefire'
+
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
@@ -18,3 +21,6 @@ const app = firebase.initializeApp(config)
 export const authenticator = app.auth()
 
 export const firestore = app.firestore()
+export const { Timestamp } = firebase.firestore
+
+Vue.use(firestorePlugin)

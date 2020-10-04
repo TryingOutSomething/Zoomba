@@ -1,28 +1,34 @@
 <template>
   <div>
-    <v-col sm="6" md="5" lg="5" xl="3" class="mt-12 pb-0">
-      <v-text-field label="Add Patient" outlined dense/>
-    </v-col>
+    <add-patient v-model="dialogIsOpen"/>
+
+    <v-btn
+      class="ml-3 mt-12 px-7 py-5"
+      :color="landingPageButtonColour"
+      @click="dialogIsOpen = true"
+    >
+      <span class="add-patient-button text-capitalize">Add Patient</span>
+    </v-btn>
 
     <v-data-table
-      class="px-3"
+      class="px-3 mt-7"
       :headers="tableHeaders"
-      :items="items"
+      :items="users"
     >
-      <template v-slot:body="{ items }">
+      <template v-slot:body="{ items: users }">
         <tbody>
         <tr
-          v-for="(item, i) in items"
+          v-for="(user, i) in users"
           :key="i"
         >
-          <td>{{ item.name }}</td>
+          <td>{{ user.name }}</td>
 
           <td class="text-center">
-            {{ item.email }}
+            {{ user.email }}
           </td>
 
           <td class="text-end">
-            <user-options/>
+            <user-options :user="user"/>
           </td>
         </tr>
         </tbody>
@@ -33,15 +39,20 @@
 
 <script>
 import UserOptions from '@/components/dashboard/main/Users/UserOptions'
+import AddPatient from '@/components/dashboard/main/Users/AddPatient'
+import { palette } from '@/mixins/interface'
+import { getAllPatients } from '@/services/firebase'
 
 export default {
   name: 'UserTable',
-  components: { UserOptions },
+  components: {
+    AddPatient,
+    UserOptions
+  },
+  mixins: [palette],
+
   data () {
     return {
-      games: ['Game 1', 'Game 2', 'Game 3'],
-      selectedGame: 'Game 1',
-
       tableHeaders: [
         {
           text: 'Patient Name',
@@ -64,18 +75,14 @@ export default {
       ],
 
       isLoading: false,
+      dialogIsOpen: false,
 
-      items: [
-        {
-          name: 'testtt',
-          email: 'HideThePain@email.com'
-        },
-        {
-          name: 'test',
-          email: 'HideThePain@email.com'
-        }
-      ]
+      users: []
     }
+  },
+
+  firestore: {
+    users: getAllPatients()
   }
 }
 </script>
