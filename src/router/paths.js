@@ -33,7 +33,7 @@ export default [
     path: DASHBOARD_PAGE_PATHS.MAIN,
     meta: {
       name: 'Dashboard Page',
-      requiresAuth: false
+      requiresAuth: true
     },
     component: () => import(/* webpackChunkName: "dashboard" */ '@/views/DashboardView'),
     children: [
@@ -41,7 +41,7 @@ export default [
         path: DASHBOARD_PAGE_PATHS.USER,
         meta: {
           name: 'Manage Users',
-          requiresAuth: false
+          requiresAuth: true
         },
         component: () => import(/* webpackChunkName: "dashboard" */ '@/components/dashboard/main/BaseManageUsers')
       },

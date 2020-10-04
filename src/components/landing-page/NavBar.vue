@@ -1,14 +1,20 @@
 <template>
-  <v-app-bar :color="landingPageBackgroundColour" elevation="0" height="100">
+  <v-app-bar
+    :color="landingPageBackgroundColour"
+    elevation="0"
+    extended
+    extension-height="70"
+    :height="isMobile"
+  >
     <v-container class="px-12">
-      <v-row align="center">
-        <v-img
-          :src="zoombaLogoUrl"
-          alt="Zoomba Logo"
-          contain
-          max-height="57"
-          max-width="205"
-        />
+      <v-row align="center" justify="center">
+          <v-img
+            :src="zoombaLogoUrl"
+            alt="Zoomba Logo"
+            contain
+            max-height="57"
+            max-width="205"
+          />
 
         <v-spacer/>
 
@@ -51,6 +57,12 @@ import { loginRoute } from '@/utils/urls'
 export default {
   name: 'NavBar',
   mixins: [logoAssetLocation, palette],
+
+  computed: {
+    isMobile () {
+      return this.$vuetify.breakpoint.smAndDown ? '200' : '100'
+    }
+  },
 
   methods: {
     scrollToContent () {
