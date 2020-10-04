@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-col>
     <v-row align="center" justify="center">
       <v-btn
         v-show="isMobileScreen"
