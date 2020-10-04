@@ -29,12 +29,20 @@ export default {
 
   methods: {
     async deletePatientFromDb () {
+      if (!this.confirmDeletion()) {
+        return
+      }
+
       const { id } = this.user
       try {
         await deletePatient(id)
       } catch (err) {
         window.alert(err)
       }
+    },
+
+    confirmDeletion () {
+      return window.confirm(`Are you sure that you want to delete user ${this.user.name}?`)
     }
   }
 }

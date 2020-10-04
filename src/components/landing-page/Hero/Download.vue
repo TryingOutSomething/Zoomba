@@ -1,21 +1,23 @@
 <template>
-  <v-row class="mt-12 mx-0" justify="center">
-    <v-btn :color="landingPageButtonColour" class="py-9 px-md-12 mx-0" x-large>
-      <v-icon
-        :color="landingPageTextColour"
-        class="pl-12"
-        large
-      >
-        mdi-cloud-download
-      </v-icon>
+  <v-col>
+    <v-row class="mt-12" justify="center" >
+      <v-btn :color="landingPageButtonColour" class="py-9 px-md-12" x-large>
+        <v-icon
+          :color="landingPageTextColour"
+          class="pl-12"
+          large
+        >
+          mdi-cloud-download
+        </v-icon>
 
-      <h1
-        class="ml-2 pr-12 text-capitalize font-weight-medium download-button"
-      >
-        Download
-      </h1>
-    </v-btn>
-  </v-row>
+        <h1
+          class="ml-2 pr-12 text-capitalize font-weight-medium download-button"
+        >
+          Download
+        </h1>
+      </v-btn>
+    </v-row>
+  </v-col>
 </template>
 
 <script>

@@ -1,11 +1,4 @@
 <template>
-  <v-app-bar
-    :color="landingPageBackgroundColour"
-    elevation="0"
-    extended
-    extension-height="70"
-    :height="isMobile"
-  >
     <v-container class="px-12">
       <v-row align="center" justify="center">
           <v-img
@@ -47,7 +40,6 @@
         </v-btn>
       </v-row>
     </v-container>
-  </v-app-bar>
 </template>
 
 <script>
@@ -55,14 +47,8 @@ import { logoAssetLocation, palette } from '@/mixins/interface'
 import { loginRoute } from '@/utils/urls'
 
 export default {
-  name: 'NavBar',
+  name: 'LargeNavBar',
   mixins: [logoAssetLocation, palette],
-
-  computed: {
-    isMobile () {
-      return this.$vuetify.breakpoint.smAndDown ? '200' : '100'
-    }
-  },
 
   methods: {
     scrollToContent () {
