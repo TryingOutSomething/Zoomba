@@ -1,7 +1,8 @@
 <template>
-  <v-container>
+  <v-col>
     <v-row align="center" justify="center">
       <v-btn
+        v-show="isMobileScreen"
         :color="landingPageTextColour"
         class="mr-12"
         icon
@@ -9,12 +10,12 @@
         @click="model--"
       >
         <v-icon size="70">mdi-chevron-left</v-icon>
-
       </v-btn>
-      <v-card class="mt-5" elevation="24" max-height="400" max-width="750">
+
+      <v-card class="mt-5" elevation="24" max-height="400" width="700">
         <v-carousel
           v-model="model"
-          :show-arrows="displayArrows"
+          :show-arrows="!isMobileScreen"
           cycle
           height="400"
           hide-delimiter-background
@@ -26,6 +27,7 @@
       </v-card>
 
       <v-btn
+        v-show="isMobileScreen"
         :color="landingPageTextColour"
         class="ml-12"
         icon
@@ -35,7 +37,7 @@
         <v-icon size="70">mdi-chevron-right</v-icon>
       </v-btn>
     </v-row>
-  </v-container>
+  </v-col>
 </template>
 
 <script>
@@ -53,8 +55,13 @@ export default {
         { src: 'https://i.ytimg.com/vi/le-qzrEHOxQ/maxresdefault.jpg' }
       ],
 
-      model: 0,
-      displayArrows: false
+      model: 0
+    }
+  },
+
+  computed: {
+    isMobileScreen () {
+      return !this.$vuetify.breakpoint.smAndDown
     }
   }
 }
