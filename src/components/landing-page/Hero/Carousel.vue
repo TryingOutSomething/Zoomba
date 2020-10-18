@@ -41,18 +41,18 @@
 </template>
 
 <script>
-import { palette } from '@/mixins/interface'
+import { logoAssetLocation, palette } from '@/mixins/interface'
 
 export default {
   name: 'Carousel',
-  mixins: [palette],
+  mixins: [logoAssetLocation, palette],
 
   data () {
     return {
       images: [
-        { src: 'https://i.imgflip.com/18ps27.jpg' },
-        { src: 'https://www.laconchakeywest.com/resourcefiles/mainimages/location-directions-of-key-west-hotel-top.jpg' },
-        { src: 'https://i.ytimg.com/vi/le-qzrEHOxQ/maxresdefault.jpg' }
+        { src: require('@/assets/BoxDrop.png') },
+        { src: require('@/assets/StarCollector.png') },
+        { src: require('@/assets/FlappyBird.png') }
       ],
 
       model: 0

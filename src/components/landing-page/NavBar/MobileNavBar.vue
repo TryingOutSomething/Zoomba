@@ -1,13 +1,15 @@
 <template>
   <v-container class="px-12">
     <v-col>
-      <v-img
-        :src="zoombaLogoUrl"
-        alt="Zoomba Logo"
-        contain
-        max-height="57"
-        max-width="205"
-      />
+      <v-row justify="center">
+        <v-img
+          :src="zoombaLogoUrl"
+          alt="Zoomba Logo"
+          contain
+          max-height="57"
+          max-width="205"
+        />
+      </v-row>
     </v-col>
 
     <v-col>
