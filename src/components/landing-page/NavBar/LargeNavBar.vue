@@ -60,7 +60,7 @@ export default {
     },
 
     redirectToLoginPage () {
-      this.$router.push(loginRoute)
+      // this.$router.push(loginRoute)
     }
   }
 }
