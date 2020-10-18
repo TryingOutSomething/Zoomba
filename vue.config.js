@@ -9,5 +9,5 @@ module.exports = {
     disableHostCheck: true
   },
 
-  publicPath: '/Zoomba/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/Zoomba' : '/'
 }
