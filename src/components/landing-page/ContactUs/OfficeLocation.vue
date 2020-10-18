@@ -5,7 +5,7 @@
     elevation="0"
     width="400"
   >
-    <v-img :src="mapLocationPath" max-height="400" max-width="400"/>
+    <v-img :src="mapLocationPath" max-height="400" max-width="400" eager/>
 
     <v-container class="mt-7">
       <p class="text-center mb-2 image-caption">

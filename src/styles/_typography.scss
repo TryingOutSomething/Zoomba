@@ -1,7 +1,5 @@
-$sixteen-px-to-em: 1em;
-
 .nav-bar-font, .white-border-text-btn {
-  font-size: $sixteen-px-to-em !important;
+  font-size: 1em !important;
 }
 
 .hero-title {
@@ -12,10 +10,26 @@ $sixteen-px-to-em: 1em;
   font-size: 2.25em;
 }
 
-.download-button {
+.download-button,
+.contact-us,
+.contact-email,
+.drawer-contact-us,
+.content-body-header {
   letter-spacing: -1px;
 }
 
-.image-caption-subtitle, .footer {
-  font-size: 0.88em;
+.add-patient-button {
+  letter-spacing: 0.5px;
+}
+
+.image-caption-subtitle, .footer, .user-role, .list-item-title, .table-menu-item {
+  font-size: 0.88em !important;
+}
+
+.contact-us {
+  font-size: 1.88em;
+}
+
+.drawer-contact-us {
+  font-size: 0.75em !important;
 }

@@ -1,14 +1,13 @@
 <template>
-  <v-app-bar :color="landingPageBackgroundColour" elevation="0" height="100">
     <v-container class="px-12">
-      <v-row align="center">
-        <v-img
-          :src="zoombaLogoUrl"
-          alt="Zoomba Logo"
-          contain
-          max-height="57"
-          max-width="205"
-        />
+      <v-row align="center" justify="center">
+          <v-img
+            :src="zoombaLogoUrl"
+            alt="Zoomba Logo"
+            contain
+            max-height="57"
+            max-width="205"
+          />
 
         <v-spacer/>
 
@@ -35,19 +34,20 @@
           :color="landingPageTextColour"
           class="text-capitalize py-5 px-7 white-border-text-btn"
           text
+          @click="redirectToLoginPage"
         >
           Login
         </v-btn>
       </v-row>
     </v-container>
-  </v-app-bar>
 </template>
 
 <script>
 import { logoAssetLocation, palette } from '@/mixins/interface'
+import { loginRoute } from '@/utils/urls'
 
 export default {
-  name: 'NavBar',
+  name: 'LargeNavBar',
   mixins: [logoAssetLocation, palette],
 
   methods: {
@@ -57,6 +57,10 @@ export default {
 
     scrollToContact () {
       this.$vuetify.goTo('#contact')
+    },
+
+    redirectToLoginPage () {
+      this.$router.push(loginRoute)
     }
   }
 }

@@ -1,12 +1,8 @@
 <template>
   <v-container class="px-0 pt-0 py-7 hero-content" fluid>
-    <v-row class="pt-12" justify="center">
-      <v-col class="pt-12">
-        <hero-title/>
-        <carousel/>
-        <download/>
-      </v-col>
-    </v-row>
+    <hero-title/>
+    <carousel/>
+    <download/>
   </v-container>
 </template>
 

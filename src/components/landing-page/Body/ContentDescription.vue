@@ -8,8 +8,9 @@
         class="mx-10 my-12"
         elevation="0"
         width="300"
+        height="150"
       >
-        <v-row align="start">
+        <v-row align="start" class="mx-0">
           <v-icon :color="landingPageButtonColour" size="3em">{{ content.icon }}</v-icon>
 
           <v-col class="py-0 pl-2">
@@ -20,7 +21,7 @@
       </v-card>
     </v-row>
 
-    <v-row justify="center">
+    <v-row align="start" justify="center">
       <v-card
         :height="contentImage.fixedHeight"
         :width="contentImage.fixedWidth"
@@ -31,6 +32,7 @@
           :height="contentImage.fixedHeight"
           :src="contentImage.src"
           :width="contentImage.fixedWidth"
+          eager
         />
       </v-card>
     </v-row>
@@ -49,23 +51,23 @@ export default {
       contentList: [
         {
           icon: 'mdi-head-cog',
-          title: 'hendrerit lectus a',
-          description: 'consequat nisl vel pretium lectus quam id leo in vitae turpis massa sed elementum tempus'
+          title: 'Train Your Mind',
+          description: 'By combining motion detection and games, you can train your reflexes and reactions'
         },
         {
           icon: 'mdi-podium-gold',
-          title: 'hendrerit lectus a',
-          description: 'consequat nisl vel pretium lectus quam id leo in vitae turpis massa sed elementum tempus'
+          title: 'Climb Up The Ranks',
+          description: 'Compete with others by sharing your scores on social media platforms'
         },
         {
           icon: 'mdi-headset',
-          title: 'hendrerit lectus a',
-          description: 'consequat nisl vel pretium lectus quam id leo in vitae turpis massa sed elementum tempus'
+          title: 'Always By You',
+          description: 'Get support from us when you have any issues or feedback for us. We\'re here 24/7'
         }
       ],
 
       contentImage: {
-        src: 'https://media.giphy.com/media/FOHj4MpT2PLm8/giphy.gif',
+        src: require('@/assets/StarCollector.gif'),
         fixedWidth: 710,
         fixedHeight: 345
       }

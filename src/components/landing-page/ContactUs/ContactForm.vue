@@ -5,54 +5,56 @@
     elevation="0"
     width="400"
   >
-    <h1 class="mb-10 contact-us-title font-weight-regular">Contact Us</h1>
+    <v-col class="pl-md-0 py-0">
+      <h1 class="mb-10 contact-us-title font-weight-regular">Contact Us</h1>
 
-    <v-form ref="feedbackForm">
-      <v-col class="pl-0 pb-0" sm="10">
-        <v-text-field
-          v-model="name"
+      <v-form ref="feedbackForm">
+        <v-col class="pl-0 pb-0" sm="10">
+          <v-text-field
+            v-model="name"
+            :background-color="landingPageTextColour"
+            :rules="[validation.required]"
+            dense
+            label="Name"
+            outlined
+          />
+
+          <v-text-field
+            v-model="email"
+            :background-color="landingPageTextColour"
+            :rules="[validation.required, validation.email]"
+            dense
+            label="Email Address"
+            outlined
+          />
+        </v-col>
+
+        <v-textarea
+          v-model="description"
           :background-color="landingPageTextColour"
           :rules="[validation.required]"
           dense
-          label="Name"
+          label="Description"
+          no-resize
           outlined
         />
+      </v-form>
 
-        <v-text-field
-          v-model="email"
-          :background-color="landingPageTextColour"
-          :rules="[validation.required, validation.email]"
-          dense
-          label="Email Address"
-          outlined
-        />
-      </v-col>
-
-      <v-textarea
-        v-model="description"
-        :background-color="landingPageTextColour"
-        :rules="[validation.required]"
-        dense
-        label="Description"
-        no-resize
-        outlined
-      />
-    </v-form>
-
-    <v-btn
-      :color="landingPageSubmitButtonColour"
-      class="px-11 py-6 text-capitalize submit-button-text"
-      @click="submitFeedbackForm"
-    >
-      Submit
-    </v-btn>
+      <v-btn
+        :color="landingPageSubmitButtonColour"
+        class="px-11 py-6 text-capitalize submit-button-text"
+        @click="submitFeedbackForm"
+      >
+        Submit
+      </v-btn>
+    </v-col>
   </v-card>
 </template>
 
 <script>
 import { palette } from '@/mixins/interface'
 import { inputValidators } from '@/mixins/validators'
-import { isIncompleteForm, isValidEmail } from '@/utils/validation'
+import { isIncompleteFeedbackForm, isValidEmail } from '@/utils/validation'
 
 export default {
   name: 'ContactForm',
@@ -83,7 +85,7 @@ export default {
         description: this.description
       }
 
-      if (isIncompleteForm(userInput)) {
+      if (isIncompleteFeedbackForm(userInput)) {
         window.alert('Name, Email Address or Description is empty!')
         return true
       }

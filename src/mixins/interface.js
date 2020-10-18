@@ -17,13 +17,14 @@ export const palette = {
 export const logoAssetLocation = {
   data () {
     return {
-      zoombaLogoUrl: require('@/assets/ZoombaLogo.png')
+      zoombaLogoUrl: require('@/assets/ZoombaLogo.png'),
+      zoombaLogoSloganUrl: require('@/assets/ZoombaSlogan.png')
     }
   }
 }
 
 const _facebookUrl = 'https://www.facebook.com/'
-const _emailAddress = 'janowyeong@hotmail.com'
+const _emailAddress = 'ahpeiq@gmail.com'
 
 export const websiteUrls = {
   methods: {
