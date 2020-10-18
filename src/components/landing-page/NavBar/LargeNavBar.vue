@@ -44,7 +44,7 @@
 
 <script>
 import { logoAssetLocation, palette } from '@/mixins/interface'
-import { loginRoute } from '@/utils/urls'
+// import { loginRoute } from '@/utils/urls'
 
 export default {
   name: 'LargeNavBar',
