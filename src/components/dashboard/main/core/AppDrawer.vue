@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer clipped app permanent>
+  <v-navigation-drawer app clipped permanent width="280">
     <v-container fluid>
       <v-col class="pt-0">
         <h3>Manage Page</h3>

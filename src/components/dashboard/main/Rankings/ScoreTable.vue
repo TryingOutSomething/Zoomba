@@ -4,6 +4,9 @@
       <v-select
         v-model="selectedGame"
         :items="games"
+        item-text="name"
+        item-value="id"
+        return-object
         outlined
         dense
         @change="getDataFirestore"
@@ -14,7 +17,18 @@
       class="px-3"
       :headers="tableHeaders"
       :items="users"
+      :loading="isLoading"
+      loading-text="Loading Data..."
     >
+      <template v-slot:progress>
+        <v-row>
+          <v-progress-linear
+            color="#ffa924"
+            indeterminate
+          />
+        </v-row>
+      </template>
+
       <template v-slot:body="{ items: users }">
         <tbody>
         <tr
@@ -47,8 +61,24 @@ export default {
 
   data () {
     return {
-      games: ['Game 1', 'Game 2', 'Game 3'],
-      selectedGame: 'Game 1',
+      games: [
+        {
+          name: 'Flappy Bird',
+          id: 'flappy_bird'
+        },
+        {
+          name: 'Stars Collector',
+          id: 'stars_collector'
+        },
+        {
+          name: 'Box Drop',
+          id: 'box_drop'
+        }
+      ],
+      selectedGame: {
+        name: 'Flappy Bird',
+        id: 'flappy_bird'
+      },
 
       tableHeaders: [
         {
@@ -83,12 +113,21 @@ export default {
 
   methods: {
     getDataFirestore () {
-      getGameRankings(this.selectedGame).onSnapshot(querySnapShot => {
+      this.isLoading = true
+
+      getGameRankings(this.selectedGame.id).onSnapshot(querySnapShot => {
         if (this.users.length > 0) {
           this.users.splice(0, this.users.length)
         }
         querySnapShot.forEach(document => this.users.push(document.data()))
-      }, err => window.alert(err.message))
+
+        this.users.sort((a, b) => parseInt(a.score) > parseInt(b.score) ? -1 : 1)
+
+        this.isLoading = false
+      }, err => {
+        window.alert(err.message)
+        this.isLoading = false
+      })
     }
   }
 }
