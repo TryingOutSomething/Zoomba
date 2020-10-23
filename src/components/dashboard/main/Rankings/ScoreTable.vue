@@ -102,8 +102,8 @@ export default {
       ],
 
       isLoading: false,
-
-      users: []
+      users: [],
+      unsubscribeToChanges: null
     }
   },
 
@@ -111,11 +111,15 @@ export default {
     this.getDataFirestore()
   },
 
+  beforeDestroy () {
+    this.unsubscribeToChanges()
+  },
+
   methods: {
     getDataFirestore () {
       this.isLoading = true
 
-      getGameRankings(this.selectedGame.id).onSnapshot(querySnapShot => {
+      this.unsubscribeToChanges = getGameRankings(this.selectedGame.id).onSnapshot(querySnapShot => {
         if (this.users.length > 0) {
           this.users.splice(0, this.users.length)
         }

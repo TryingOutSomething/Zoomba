@@ -62,7 +62,7 @@ export default {
         {
           icon: 'mdi-headset',
           title: 'Always By You',
-          description: 'Get support from us when you have any issues or feedback for us. We\'re here 24/7'
+          description: 'Get support from us when you have any issues. We\'re here 24/7'
         }
       ],
 
