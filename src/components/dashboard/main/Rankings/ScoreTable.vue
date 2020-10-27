@@ -111,8 +111,8 @@ export default {
     this.getDataFirestore()
   },
 
-  beforeDestroy () {
-    this.unsubscribeToChanges()
+  beforeDestroy: async function () {
+    await this.unsubscribeToChanges()
   },
 
   methods: {

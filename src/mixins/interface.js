@@ -23,7 +23,7 @@ export const logoAssetLocation = {
   }
 }
 
-const _facebookUrl = 'https://www.facebook.com/'
+const _facebookUrl = 'https://www.facebook.com/Zoomba-Game-108881370543869'
 const _emailAddress = 'ahpeiq@gmail.com'
 
 export const websiteUrls = {
