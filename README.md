@@ -8,6 +8,10 @@ This project complements the main Zoomba desktop application as it is used to ma
 The web application is currently hosted on [Github pages](https://tryingoutsomething.github.io/Zoomba/) via the `gh-pages` branch of this repository
 
 ## Project setup
+1. Install NodeJS or Node Version Manager (NVM)
+2. Ensure Node Package Manager has been installed along with NodeJS
+
+Run the command below to install dependencies required for this project
 ```
 npm install
 ```
