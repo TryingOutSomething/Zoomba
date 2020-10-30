@@ -54,7 +54,7 @@ export default {
         {
           to: dashboardRankingRoute,
           icon: 'mdi-podium',
-          text: 'Rankings',
+          text: 'Home',
           name: 'View Rankings'
         },
         {
