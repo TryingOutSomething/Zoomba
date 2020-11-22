@@ -32,7 +32,8 @@ export default {
       }
 
       this.deletePlayer(this.user)
-        .catch(err => console.log(err))
+        .then(() => window.alert('Player deleted successfully!'))
+        .catch(err => window.alert(err))
     },
 
     confirmDeletion() {

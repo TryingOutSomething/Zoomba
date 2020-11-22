@@ -24,12 +24,17 @@ export const logoAssetLocation = {
 }
 
 const _facebookUrl = 'https://www.facebook.com/Zoomba-Game-108881370543869'
+const _githubUrl = 'https://github.com/TryingOutSomething/Zoomba'
 const _emailAddress = 'ahpeiq@gmail.com'
 
 export const websiteUrls = {
   methods: {
     launchFaceBookSite() {
       window.open(_facebookUrl, '_blank')
+    },
+
+    launchGitHubSite() {
+      window.open(_githubUrl, '_blank')
     },
 
     launchEmail() {

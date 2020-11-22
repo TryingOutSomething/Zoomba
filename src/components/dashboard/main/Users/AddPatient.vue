@@ -83,7 +83,7 @@ export default {
           this.closeModal()
         })
         .catch(err => {
-          console.log(err)
+          window.alert(err)
           this.isLoading = false
         })
     },

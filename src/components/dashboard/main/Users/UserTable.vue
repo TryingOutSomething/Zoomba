@@ -14,7 +14,18 @@
       class="px-3 mt-7"
       :headers="tableHeaders"
       :items="players"
+      :loading="isLoading"
+      loading-text="Loading Data..."
     >
+      <template v-slot:progress>
+        <v-row>
+          <v-progress-linear
+            color="#ffa924"
+            indeterminate
+          />
+        </v-row>
+      </template>
+
       <template v-slot:body="{ items: users }">
         <tbody>
         <tr
@@ -92,8 +103,15 @@ export default {
     ...mapMutations('app', ['toggleModalStatus']),
 
     fetchPlayers() {
+      this.isLoading = true
+
       this.fetchAllPlayers()
         .catch(err => console.log(err))
+        .finally(() => {
+          setTimeout(() => {
+            this.isLoading = false
+          }, 300)
+        })
     }
   }
 }

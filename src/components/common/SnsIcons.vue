@@ -10,6 +10,14 @@
 
     <v-icon
       :color="iconColour"
+      :class="spaceBetween"
+      @click="launchGitHubSite"
+    >
+      mdi-github
+    </v-icon>
+
+    <v-icon
+      :color="iconColour"
       @click="launchEmail"
     >
       mdi-email-outline
