@@ -124,7 +124,7 @@ export default {
 
     getDataFromServer() {
       this.isLoading = true
-      this.fetchPlayerRankings()
+      this.fetchPlayerRankings(this.selectedGame.id)
         .catch(err => console.log(err))
         .finally(this.isLoading = false)
     }

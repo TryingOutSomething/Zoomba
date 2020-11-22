@@ -1,9 +1,9 @@
 import api from '@/services/mock-api'
 
 export default {
-  fetchPlayerRankings({ commit }) {
+  fetchPlayerRankings({ commit }, selectedGame) {
     return new Promise((resolve, reject) => {
-      api.fetchPlayerRankingsFromServer()
+      api.fetchPlayerRankingsFromServer(selectedGame)
         .then(response => {
           commit('populateRankingTable', response.data)
           resolve()

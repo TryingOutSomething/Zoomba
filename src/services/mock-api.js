@@ -1,18 +1,4 @@
-const mockRankingData = [
-  {
-    email: 'teet@tete.com',
-    name: 'test',
-    score: '0'
-  }
-]
-
-const mockPlayerData = [
-  {
-    email: 'teet@tete.com',
-    name: 'test',
-    score: '0'
-  }
-]
+import { mockPlayerData, mockRankingDataDescending } from '@/utils/mock-data'
 
 const generateNewPlayerPayload = (player) => {
   return {
@@ -21,12 +7,12 @@ const generateNewPlayerPayload = (player) => {
 }
 
 export default {
-  fetchPlayerRankingsFromServer() {
+  fetchPlayerRankingsFromServer(selectedGame) {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve({
-          data: mockRankingData
-        }, 10000)
+          data: mockRankingDataDescending(selectedGame)
+        }, 1000)
       })
     })
   },
@@ -36,7 +22,7 @@ export default {
       setTimeout(() => {
         resolve({
           data: mockPlayerData
-        }, 10000)
+        }, 1000)
       })
     })
   },
