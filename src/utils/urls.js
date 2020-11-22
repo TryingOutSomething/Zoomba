@@ -17,4 +17,4 @@ export const clientRoutes = {
 export const loginRoute = `${_authPaths.MAIN}`
 export const dashboardUserRoute = `${_dashboardPagePaths.MAIN}/${_dashboardPagePaths.USER}`
 export const dashboardRankingRoute = `${_dashboardPagePaths.MAIN}/${_dashboardPagePaths.RANKINGS}`
-export const dashboardMainPageRoute = `${_dashboardPagePaths.MAIN}/${_dashboardPagePaths.RANKINGS}`
+export const dashboardMainPageRoute = `${_dashboardPagePaths.MAIN}/${_dashboardPagePaths.USER}`
