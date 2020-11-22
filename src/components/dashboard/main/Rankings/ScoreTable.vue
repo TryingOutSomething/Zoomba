@@ -53,7 +53,7 @@
 
 <script>
 import RankingOptions from '@/components/dashboard/main/Rankings/RankingOptions'
-import { getGameRankings } from '@/services/firebase'
+// import { getGameRankings } from '@/services/firebase'
 
 export default {
   name: 'ScoreTable',
@@ -102,36 +102,37 @@ export default {
       ],
 
       isLoading: false,
-      users: [],
-      unsubscribeToChanges: null
+      users: []
+      // unsubscribeToChanges: null
     }
   },
 
-  created () {
+  created() {
     this.getDataFirestore()
   },
 
-  beforeDestroy: async function () {
-    await this.unsubscribeToChanges()
-  },
+  // beforeDestroy: async function () {
+  //   await this.unsubscribeToChanges()
+  // },
 
   methods: {
-    getDataFirestore () {
-      this.isLoading = true
+    getDataFirestore() {
+      // this.isLoading = true
 
-      this.unsubscribeToChanges = getGameRankings(this.selectedGame.id).onSnapshot(querySnapShot => {
-        if (this.users.length > 0) {
-          this.users.splice(0, this.users.length)
-        }
-        querySnapShot.forEach(document => this.users.push(document.data()))
-
-        this.users.sort((a, b) => parseInt(a.score) > parseInt(b.score) ? -1 : 1)
-
-        this.isLoading = false
-      }, err => {
-        window.alert(err.message)
-        this.isLoading = false
-      })
+      // this.unsubscribeToChanges = getGameRankings(this.selectedGame.id).onSnapshot(querySnapShot => {
+      //   if (this.users.length > 0) {
+      //     this.users.splice(0, this.users.length)
+      //   }
+      //   querySnapShot.forEach(document => this.users.push(document.data()))
+      //
+      //   this.users.sort((a, b) => parseInt(a.score) > parseInt(b.score) ? -1 : 1)
+      //
+      //   this.isLoading = false
+      // }, err => {
+      //   window.alert(err.message)
+      //   this.isLoading = false
+      // })
+      console.log('fetch from backend')
     }
   }
 }
