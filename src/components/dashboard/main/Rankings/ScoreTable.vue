@@ -54,8 +54,8 @@
 </template>
 
 <script>
-import RankingOptions from '@/components/dashboard/main/Rankings/RankingOptions'
 import { mapActions, mapState } from 'vuex'
+import RankingOptions from '@/components/dashboard/main/Rankings/RankingOptions'
 import ViewPlayerRankings from '@/components/dashboard/main/Rankings/ViewPlayerRankings'
 
 export default {

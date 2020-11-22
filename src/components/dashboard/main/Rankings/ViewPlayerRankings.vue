@@ -29,11 +29,9 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import BaseModal from '@/components/dashboard/main/core/BaseModal'
 
 export default {
   name: 'ViewPlayerRankings',
-  components: { BaseModal },
 
   computed: {
     ...mapState('scores', ['viewingPlayerRanking'])

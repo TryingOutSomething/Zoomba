@@ -13,7 +13,7 @@
     <v-data-table
       class="px-3 mt-7"
       :headers="tableHeaders"
-      :items="users"
+      :items="players"
     >
       <template v-slot:body="{ items: users }">
         <tbody>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 import { palette } from '@/mixins/interface'
 import UserOptions from '@/components/dashboard/main/Users/UserOptions'
 import AddPatient from '@/components/dashboard/main/Users/AddPatient'
@@ -75,18 +75,26 @@ export default {
       ],
 
       isLoading: false,
-      dialogIsOpen: false,
-
-      users: []
+      dialogIsOpen: false
     }
   },
 
   created() {
-    console.log('fetch users from backend')
+    this.fetchPlayers()
+  },
+
+  computed: {
+    ...mapState('user', ['players'])
   },
 
   methods: {
-    ...mapMutations('app', ['toggleModalStatus'])
+    ...mapActions('user', ['fetchAllPlayers']),
+    ...mapMutations('app', ['toggleModalStatus']),
+
+    fetchPlayers() {
+      this.fetchAllPlayers()
+        .catch(err => console.log(err))
+    }
   }
 }
 </script>

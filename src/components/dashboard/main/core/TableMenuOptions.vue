@@ -11,7 +11,9 @@
       </v-btn>
     </template>
 
-    <slot name="options" />
+    <v-list>
+      <slot name="options"/>
+    </v-list>
   </v-menu>
 </template>
 <script>

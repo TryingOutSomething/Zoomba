@@ -8,7 +8,7 @@
       <v-icon @click="closeModal">mdi-close</v-icon>
     </v-card-title>
 
-    <v-form ref="registerParticipant">
+    <v-form ref="registerPlayer">
       <v-col class="px-6">
         <v-text-field
           v-model="email"
@@ -40,14 +40,12 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 import { inputValidators } from '@/mixins/validators'
 import { isIncompleteRegistrationForm, isValidEmail } from '@/utils/validation'
-import BaseModal from '@/components/dashboard/main/core/BaseModal'
 
 export default {
   name: 'AddPatient',
-  components: { BaseModal },
   mixins: [inputValidators],
 
   props: {
@@ -65,6 +63,7 @@ export default {
   },
 
   methods: {
+    ...mapActions('user', ['addPlayer']),
     ...mapMutations('app', ['toggleModalStatus']),
 
     registerPatient() {
@@ -73,19 +72,20 @@ export default {
       //   return
       // }
 
-      // try {
-      //   this.isLoading = true
-      //
-      //   await createPatient(this.email, this.name)
-      //
-      //   window.alert('User created successfully!')
-      //   this.closeModal()
-      // } catch (err) {
-      //   this.isLoading = false
-      //   window.alert(err)
-      // }
+      this.isLoading = true
 
-      console.log('add patient')
+      this.addPlayer({
+        email: this.email,
+        name: this.name
+      })
+        .then(() => {
+          window.alert('User created successfully!')
+          this.closeModal()
+        })
+        .catch(err => {
+          console.log(err)
+          this.isLoading = false
+        })
     },
 
     closeModal() {
@@ -95,7 +95,7 @@ export default {
     },
 
     clearInput() {
-      this.$refs.registerParticipant.reset()
+      this.$refs.registerPlayer.reset()
     },
 
     isInvalidForm() {

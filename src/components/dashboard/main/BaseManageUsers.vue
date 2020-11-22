@@ -7,15 +7,11 @@
 </template>
 
 <script>
-import ContentBody from '@/components/dashboard/main/core/ContentBody'
 import UserTable from '@/components/dashboard/main/Users/UserTable'
 
 export default {
   name: 'BaseManageUser',
-  components: {
-    UserTable,
-    ContentBody
-  }
+  components: { UserTable }
 }
 </script>
 
