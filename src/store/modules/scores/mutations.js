@@ -7,7 +7,7 @@ export default {
     state.viewingPlayerRanking = Object.assign({}, player)
   },
 
-  clearSelectedPlayerInfo(state, player) {
+  clearSelectedPlayerInfo(state) {
     for (const key in state.viewingPlayerRanking) {
       delete state.viewingPlayerRanking[key]
     }

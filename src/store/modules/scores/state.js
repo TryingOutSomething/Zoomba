@@ -1,3 +1,4 @@
 export default {
-  rankings: []
+  rankings: [],
+  viewingPlayerRanking: {}
 }
