@@ -14,16 +14,25 @@
 .contact-us,
 .contact-email,
 .drawer-contact-us,
-.content-body-header {
-  letter-spacing: -1px;
+.content-body-header,
+.table-menu-item-option {
+  letter-spacing: -1px !important;
 }
 
 .add-patient-button {
   letter-spacing: 0.5px;
 }
 
-.image-caption-subtitle, .footer, .user-role, .list-item-title, .table-menu-item {
+.image-caption-subtitle,
+.footer,
+.user-role,
+.list-item-title,
+.table-menu-item {
   font-size: 0.88em !important;
+}
+
+.table-menu-item-option {
+  font-size: 1em !important;
 }
 
 .contact-us {

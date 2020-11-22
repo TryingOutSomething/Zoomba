@@ -4,7 +4,7 @@ const _orange = '#ffa924'
 const _grey = '#839eaf'
 
 export const palette = {
-  data () {
+  data() {
     return {
       landingPageBackgroundColour: _purple,
       landingPageTextColour: _white,
@@ -15,7 +15,7 @@ export const palette = {
 }
 
 export const logoAssetLocation = {
-  data () {
+  data() {
     return {
       zoombaLogoUrl: require('@/assets/ZoombaLogo.png'),
       zoombaLogoSloganUrl: require('@/assets/ZoombaSlogan.png')
@@ -28,11 +28,11 @@ const _emailAddress = 'ahpeiq@gmail.com'
 
 export const websiteUrls = {
   methods: {
-    launchFaceBookSite () {
+    launchFaceBookSite() {
       window.open(_facebookUrl, '_blank')
     },
 
-    launchEmail () {
+    launchEmail() {
       window.location.href = `mailto:${_emailAddress}`
     }
   }

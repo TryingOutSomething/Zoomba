@@ -1,11 +1,11 @@
 <template>
   <div>
-    <add-patient v-model="dialogIsOpen"/>
+    <add-patient/>
 
     <v-btn
       class="ml-3 mt-12 px-7 py-5"
       :color="landingPageButtonColour"
-      @click="dialogIsOpen = true"
+      @click="toggleModalStatus"
     >
       <span class="add-patient-button text-capitalize">Add Patient</span>
     </v-btn>
@@ -38,10 +38,10 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { palette } from '@/mixins/interface'
 import UserOptions from '@/components/dashboard/main/Users/UserOptions'
 import AddPatient from '@/components/dashboard/main/Users/AddPatient'
-import { palette } from '@/mixins/interface'
-// import { getAllPatients } from '@/services/firebase'
 
 export default {
   name: 'UserTable',
@@ -83,9 +83,10 @@ export default {
 
   created() {
     console.log('fetch users from backend')
+  },
+
+  methods: {
+    ...mapMutations('app', ['toggleModalStatus'])
   }
-  // firestore: {
-  //   users: getAllPatients()
-  // }
 }
 </script>
