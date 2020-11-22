@@ -1,11 +1,11 @@
 <template>
   <div>
-    <add-patient v-model="dialogIsOpen"/>
+    <add-patient/>
 
     <v-btn
       class="ml-3 mt-12 px-7 py-5"
       :color="landingPageButtonColour"
-      @click="dialogIsOpen = true"
+      @click="toggleModalStatus"
     >
       <span class="add-patient-button text-capitalize">Add Patient</span>
     </v-btn>
@@ -13,8 +13,19 @@
     <v-data-table
       class="px-3 mt-7"
       :headers="tableHeaders"
-      :items="users"
+      :items="players"
+      :loading="isLoading"
+      loading-text="Loading Data..."
     >
+      <template v-slot:progress>
+        <v-row>
+          <v-progress-linear
+            color="#ffa924"
+            indeterminate
+          />
+        </v-row>
+      </template>
+
       <template v-slot:body="{ items: users }">
         <tbody>
         <tr
@@ -38,10 +49,10 @@
 </template>
 
 <script>
+import { mapActions, mapMutations, mapState } from 'vuex'
+import { palette } from '@/mixins/interface'
 import UserOptions from '@/components/dashboard/main/Users/UserOptions'
 import AddPatient from '@/components/dashboard/main/Users/AddPatient'
-import { palette } from '@/mixins/interface'
-import { getAllPatients } from '@/services/firebase'
 
 export default {
   name: 'UserTable',
@@ -51,7 +62,7 @@ export default {
   },
   mixins: [palette],
 
-  data () {
+  data() {
     return {
       tableHeaders: [
         {
@@ -75,14 +86,33 @@ export default {
       ],
 
       isLoading: false,
-      dialogIsOpen: false,
-
-      users: []
+      dialogIsOpen: false
     }
   },
 
-  firestore: {
-    users: getAllPatients()
+  created() {
+    this.fetchPlayers()
+  },
+
+  computed: {
+    ...mapState('user', ['players'])
+  },
+
+  methods: {
+    ...mapActions('user', ['fetchAllPlayers']),
+    ...mapMutations('app', ['toggleModalStatus']),
+
+    fetchPlayers() {
+      this.isLoading = true
+
+      this.fetchAllPlayers()
+        .catch(err => console.log(err))
+        .finally(() => {
+          setTimeout(() => {
+            this.isLoading = false
+          }, 300)
+        })
+    }
   }
 }
 </script>

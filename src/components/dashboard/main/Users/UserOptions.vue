@@ -1,24 +1,20 @@
 <template>
   <table-menu-options>
     <template v-slot:options>
-      <v-list>
-        <v-list-item @click="deletePatientFromDb">
-          <v-list-item-title class="table-menu-item">
-            Delete User
-          </v-list-item-title>
-        </v-list-item>
-      </v-list>
+      <v-list-item @click="deletePatient">
+        <v-list-item-title class="table-menu-item">
+          Delete User
+        </v-list-item-title>
+      </v-list-item>
     </template>
   </table-menu-options>
 </template>
 
 <script>
-import TableMenuOptions from '@/components/dashboard/main/core/TableMenuOptions'
-import { deletePatient } from '@/services/firebase'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'UserOptions',
-  components: { TableMenuOptions },
 
   props: {
     user: {
@@ -28,20 +24,19 @@ export default {
   },
 
   methods: {
-    async deletePatientFromDb () {
+    ...mapActions('user', ['deletePlayer']),
+
+    deletePatient() {
       if (!this.confirmDeletion()) {
         return
       }
 
-      const { id } = this.user
-      try {
-        await deletePatient(id)
-      } catch (err) {
-        window.alert(err)
-      }
+      this.deletePlayer(this.user)
+        .then(() => window.alert('Player deleted successfully!'))
+        .catch(err => window.alert(err))
     },
 
-    confirmDeletion () {
+    confirmDeletion() {
       return window.confirm(`Are you sure that you want to delete user ${this.user.name}?`)
     }
   }

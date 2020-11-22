@@ -1,9 +1,13 @@
 export default {
-  changeToLoginBackgroundColour (state) {
+  changeToLoginBackgroundColour(state) {
     state.contentBodyColour = 'login-body-colour'
   },
 
-  changeToMainBackgroundColour (state) {
+  changeToMainBackgroundColour(state) {
     state.contentBodyColour = 'content-body'
+  },
+
+  toggleModalStatus(state) {
+    state.modalIsOpen = !state.modalIsOpen
   }
 }

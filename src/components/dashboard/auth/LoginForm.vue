@@ -6,6 +6,8 @@
           label="Email Address"
           clear-icon="mdi-close-circle"
           :rules="[validation.required, validation.email]"
+          :hint="hint"
+          persistent-hint
           clearable
           v-model="email"
         />
@@ -18,6 +20,8 @@
           label="Password"
           :type="showPassword? 'text' : 'password'"
           :rules="[validation.required]"
+          :hint="hint"
+          persistent-hint
           v-model="password"
           @keydown.enter="login"
         >
@@ -53,7 +57,6 @@
 
 <script>
 import { dashboardMainPageRoute } from '@/utils/urls'
-import { authenticateUser } from '@/services/firebase'
 import { isValidEmail, isIncompleteLoginForm } from '@/utils/validation'
 import { inputValidators } from '@/mixins/validators'
 
@@ -61,42 +64,38 @@ export default {
   name: 'LoginForm',
   mixins: [inputValidators],
 
-  data () {
+  data() {
     return {
       showPassword: false,
       iconButtonColour: '#868686',
 
       email: '',
       password: '',
-      isLoading: false
+      isLoading: false,
+      hint: 'No login implemented currently. Click log in'
     }
   },
 
   computed: {
-    displayShowOrHidePasswordText () {
+    displayShowOrHidePasswordText() {
       return this.showPassword ? 'Hide' : 'Show'
     }
   },
 
   methods: {
-    login () {
-      if (this.isInvalidForm()) {
-        return
-      }
+    login() {
+      // Validation before submitting user input to backend
+      // if (this.isInvalidForm()) {
+      //   return
+      // }
 
       this.isLoading = true
 
-      authenticateUser(this.email, this.password)
-        .then(() => {
-          this.$router.push(dashboardMainPageRoute)
-        })
-        .catch(err => {
-          this.isLoading = false
-          window.alert(err)
-        })
+      // Handle auth here then
+      this.$router.push(dashboardMainPageRoute)
     },
 
-    isInvalidForm () {
+    isInvalidForm() {
       if (isIncompleteLoginForm(this.email, this.password)) {
         window.alert('Email or password are required!')
 

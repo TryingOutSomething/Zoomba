@@ -8,14 +8,10 @@
 
 <script>
 import ScoreTable from '@/components/dashboard/main/Rankings/ScoreTable'
-import ContentBody from '@/components/dashboard/main/core/ContentBody'
 
 export default {
   name: 'BaseRankings',
-  components: {
-    ContentBody,
-    ScoreTable
-  }
+  components: { ScoreTable }
 }
 </script>
 

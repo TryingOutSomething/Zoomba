@@ -1,21 +1,37 @@
 <template>
   <table-menu-options>
     <template v-slot:options>
-      <v-list>
-        <v-list-item>
-          <v-list-item-title class="table-menu-item">View Score Details</v-list-item-title>
-        </v-list-item>
-      </v-list>
+      <v-list-item @click="displayUserRanking">
+        <v-list-item-title class="table-menu-item">
+          View Score Details
+        </v-list-item-title>
+      </v-list-item>
     </template>
   </table-menu-options>
 </template>
 
 <script>
-import TableMenuOptions from '@/components/dashboard/main/core/TableMenuOptions'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'RankingOptions',
-  components: { TableMenuOptions }
+
+  props: {
+    playerRanking: {
+      type: Object,
+      required: true
+    }
+  },
+
+  methods: {
+    ...mapMutations('app', ['toggleModalStatus']),
+    ...mapMutations('scores', ['populateSelectedPlayerInfo']),
+
+    displayUserRanking() {
+      this.populateSelectedPlayerInfo(this.playerRanking)
+      this.toggleModalStatus()
+    }
+  }
 }
 </script>
 

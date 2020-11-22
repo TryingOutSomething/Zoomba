@@ -1,50 +1,48 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="500">
-    <v-card>
-      <v-card-title>
-        Register Patient
+  <base-modal>
+    <v-card-title>
+      Register Patient
 
+      <v-spacer/>
+
+      <v-icon @click="closeModal">mdi-close</v-icon>
+    </v-card-title>
+
+    <v-form ref="registerPlayer">
+      <v-col class="px-6">
+        <v-text-field
+          v-model="email"
+          :rules="[validation.required, validation.email]"
+          label="Patient Email"
+        />
+
+        <v-text-field
+          v-model="name"
+          :rules="[validation.required]"
+          label="Patient Name"
+          @keydown.enter="registerPatient"
+        />
+      </v-col>
+
+      <v-card-actions class="pr-4 pb-7 pt-0">
         <v-spacer/>
 
-        <v-icon @click="closeModal">mdi-close</v-icon>
-      </v-card-title>
-
-      <v-form ref="registerParticipant">
-        <v-col class="px-6">
-          <v-text-field
-            label="Patient Email"
-            :rules="[validation.required, validation.email]"
-            v-model="email"
-          />
-
-          <v-text-field
-            label="Patient Name"
-            :rules="[validation.required]"
-            v-model="name"
-            @keydown.enter="registerPatient"
-          />
-        </v-col>
-
-        <v-card-actions class="pr-4 pb-7 pt-0">
-          <v-spacer/>
-
-          <v-btn
-            text
-            :loading="isLoading"
-            @click="registerPatient"
-          >
-            Add Patient
-          </v-btn>
-        </v-card-actions>
-      </v-form>
-    </v-card>
-  </v-dialog>
+        <v-btn
+          :loading="isLoading"
+          text
+          @click="registerPatient"
+        >
+          Add Patient
+        </v-btn>
+      </v-card-actions>
+    </v-form>
+  </base-modal>
 </template>
 
 <script>
+import { mapActions, mapMutations } from 'vuex'
 import { inputValidators } from '@/mixins/validators'
 import { isIncompleteRegistrationForm, isValidEmail } from '@/utils/validation'
-import { createPatient } from '@/services/firebase'
 
 export default {
   name: 'AddPatient',
@@ -56,7 +54,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       email: '',
       name: '',
@@ -64,48 +62,43 @@ export default {
     }
   },
 
-  computed: {
-    dialog: {
-      get () {
-        return this.value
-      },
-
-      set (value) {
-        this.$emit('input', value)
-      }
-    }
-  },
-
   methods: {
-    async registerPatient () {
-      if (this.isInvalidForm()) {
-        return
-      }
+    ...mapActions('user', ['addPlayer']),
+    ...mapMutations('app', ['toggleModalStatus']),
 
-      try {
-        this.isLoading = true
+    registerPatient() {
+      // Validation before submitting user input to backend
+      // if (this.isInvalidForm()) {
+      //   return
+      // }
 
-        await createPatient(this.email, this.name)
+      this.isLoading = true
 
-        window.alert('User created successfully!')
-        this.closeModal()
-      } catch (err) {
-        this.isLoading = false
-        window.alert(err)
-      }
+      this.addPlayer({
+        email: this.email,
+        name: this.name
+      })
+        .then(() => {
+          window.alert('User created successfully!')
+          this.closeModal()
+        })
+        .catch(err => {
+          window.alert(err)
+          this.isLoading = false
+        })
     },
 
-    closeModal () {
+    closeModal() {
       this.clearInput()
       this.isLoading = false
-      this.dialog = false
+      this.toggleModalStatus()
     },
 
-    clearInput () {
-      this.$refs.registerParticipant.reset()
+    clearInput() {
+      this.$refs.registerPlayer.reset()
     },
 
-    isInvalidForm () {
+    isInvalidForm() {
       if (isIncompleteRegistrationForm(this.email, this.name)) {
         window.alert('Email or Name field is required!')
         return true

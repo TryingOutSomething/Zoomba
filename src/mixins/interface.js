@@ -4,7 +4,7 @@ const _orange = '#ffa924'
 const _grey = '#839eaf'
 
 export const palette = {
-  data () {
+  data() {
     return {
       landingPageBackgroundColour: _purple,
       landingPageTextColour: _white,
@@ -15,7 +15,7 @@ export const palette = {
 }
 
 export const logoAssetLocation = {
-  data () {
+  data() {
     return {
       zoombaLogoUrl: require('@/assets/ZoombaLogo.png'),
       zoombaLogoSloganUrl: require('@/assets/ZoombaSlogan.png')
@@ -23,16 +23,21 @@ export const logoAssetLocation = {
   }
 }
 
-const _facebookUrl = 'https://www.facebook.com/'
+const _facebookUrl = 'https://www.facebook.com/Zoomba-Game-108881370543869'
+const _githubUrl = 'https://github.com/TryingOutSomething/Zoomba'
 const _emailAddress = 'ahpeiq@gmail.com'
 
 export const websiteUrls = {
   methods: {
-    launchFaceBookSite () {
+    launchFaceBookSite() {
       window.open(_facebookUrl, '_blank')
     },
 
-    launchEmail () {
+    launchGitHubSite() {
+      window.open(_githubUrl, '_blank')
+    },
+
+    launchEmail() {
       window.location.href = `mailto:${_emailAddress}`
     }
   }

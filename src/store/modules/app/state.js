@@ -1,3 +1,4 @@
 export default {
-  contentBodyColour: 'content-body'
+  contentBodyColour: 'content-body',
+  modalIsOpen: false
 }

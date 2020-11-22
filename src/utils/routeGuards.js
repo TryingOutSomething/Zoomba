@@ -1,12 +1,12 @@
-import { authenticator } from '@/plugins/firebase'
+// import { authenticator } from '@/plugins/firebase'
 import { loginRoute } from '@/utils/urls'
 
 const _userIsLoggedIn = () => {
-  return new Promise(resolve => {
-    authenticator.onAuthStateChanged(user => {
-      resolve(user)
-    })
-  })
+  // return new Promise(resolve => {
+  //   authenticator.onAuthStateChanged(user => {
+  //     resolve(user)
+  //   })
+  // })
 }
 
 export const checkIfUserIsAuthorized = async (to, from, next) => {

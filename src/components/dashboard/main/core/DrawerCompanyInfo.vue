@@ -36,7 +36,6 @@
 <script>
 import SnsIcons from '@/components/common/SnsIcons'
 import { loginRoute } from '@/utils/urls'
-import { logoutUser } from '@/services/firebase'
 
 export default {
   name: 'DrawerCompanyInfo',
@@ -49,10 +48,8 @@ export default {
   },
 
   methods: {
-    logout () {
-      logoutUser()
-        .then(() => this.$router.push(loginRoute))
-        .catch(err => window.alert(err))
+    logout() {
+      this.$router.push(loginRoute)
     }
   }
 }

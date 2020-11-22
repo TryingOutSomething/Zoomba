@@ -41,7 +41,7 @@ export default [
     path: DASHBOARD_PAGE_PATHS.MAIN,
     meta: {
       name: 'Dashboard Page',
-      requiresAuth: true
+      requiresAuth: false
     },
     component: () => import(/* webpackChunkName: "dashboard" */ '@/views/DashboardView'),
     children: [
@@ -49,7 +49,7 @@ export default [
         path: DASHBOARD_PAGE_PATHS.USER,
         meta: {
           name: 'Manage Users',
-          requiresAuth: true
+          requiresAuth: false
         },
         component: () => import(/* webpackChunkName: "dashboard" */ '@/components/dashboard/main/BaseManageUsers')
       },
@@ -57,7 +57,7 @@ export default [
         path: DASHBOARD_PAGE_PATHS.RANKINGS,
         meta: {
           name: 'View Rankings',
-          requiresAuth: true
+          requiresAuth: false
         },
         component: () => import(/* webpackChunkName: "dashboard" */ '@/components/dashboard/main/BaseRankings')
       }

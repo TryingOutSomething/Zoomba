@@ -42,7 +42,7 @@
           text
           @click="redirectToLoginPage"
         >
-          Login
+          Admin Login
         </v-btn>
       </v-row>
     </v-col>
