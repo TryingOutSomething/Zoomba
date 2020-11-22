@@ -44,7 +44,7 @@
 <script>
 import { inputValidators } from '@/mixins/validators'
 import { isIncompleteRegistrationForm, isValidEmail } from '@/utils/validation'
-import { createPatient } from '@/services/firebase'
+// import { createPatient } from '@/services/firebase'
 
 export default {
   name: 'AddPatient',
@@ -56,7 +56,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       email: '',
       name: '',
@@ -66,46 +66,49 @@ export default {
 
   computed: {
     dialog: {
-      get () {
+      get() {
         return this.value
       },
 
-      set (value) {
+      set(value) {
         this.$emit('input', value)
       }
     }
   },
 
   methods: {
-    async registerPatient () {
-      if (this.isInvalidForm()) {
-        return
-      }
+    registerPatient() {
+      // Validation before submitting user input to backend
+      // if (this.isInvalidForm()) {
+      //   return
+      // }
 
-      try {
-        this.isLoading = true
+      // try {
+      //   this.isLoading = true
+      //
+      //   await createPatient(this.email, this.name)
+      //
+      //   window.alert('User created successfully!')
+      //   this.closeModal()
+      // } catch (err) {
+      //   this.isLoading = false
+      //   window.alert(err)
+      // }
 
-        await createPatient(this.email, this.name)
-
-        window.alert('User created successfully!')
-        this.closeModal()
-      } catch (err) {
-        this.isLoading = false
-        window.alert(err)
-      }
+      console.log('add patient')
     },
 
-    closeModal () {
+    closeModal() {
       this.clearInput()
       this.isLoading = false
       this.dialog = false
     },
 
-    clearInput () {
+    clearInput() {
       this.$refs.registerParticipant.reset()
     },
 
-    isInvalidForm () {
+    isInvalidForm() {
       if (isIncompleteRegistrationForm(this.email, this.name)) {
         window.alert('Email or Name field is required!')
         return true

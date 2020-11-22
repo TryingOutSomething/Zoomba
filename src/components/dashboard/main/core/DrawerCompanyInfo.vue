@@ -50,9 +50,9 @@ export default {
 
   methods: {
     logout () {
-      logoutUser()
-        .then(() => this.$router.push(loginRoute))
-        .catch(err => window.alert(err))
+      // logoutUser()
+      //   .then(() => this.$router.push(loginRoute))
+      //   .catch(err => window.alert(err))
     }
   }
 }

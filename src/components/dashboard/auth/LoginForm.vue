@@ -53,7 +53,7 @@
 
 <script>
 import { dashboardMainPageRoute } from '@/utils/urls'
-import { authenticateUser } from '@/services/firebase'
+// import { authenticateUser } from '@/services/firebase'
 import { isValidEmail, isIncompleteLoginForm } from '@/utils/validation'
 import { inputValidators } from '@/mixins/validators'
 
@@ -61,7 +61,7 @@ export default {
   name: 'LoginForm',
   mixins: [inputValidators],
 
-  data () {
+  data() {
     return {
       showPassword: false,
       iconButtonColour: '#868686',
@@ -73,30 +73,33 @@ export default {
   },
 
   computed: {
-    displayShowOrHidePasswordText () {
+    displayShowOrHidePasswordText() {
       return this.showPassword ? 'Hide' : 'Show'
     }
   },
 
   methods: {
-    login () {
-      if (this.isInvalidForm()) {
-        return
-      }
+    login() {
+      // Validation before submitting user input to backend
+      // if (this.isInvalidForm()) {
+      //   return
+      // }
 
       this.isLoading = true
 
-      authenticateUser(this.email, this.password)
-        .then(() => {
-          this.$router.push(dashboardMainPageRoute)
-        })
-        .catch(err => {
-          this.isLoading = false
-          window.alert(err)
-        })
+      // authenticateUser(this.email, this.password)
+      //   .then(() => {
+      //     this.$router.push(dashboardMainPageRoute)
+      //   })
+      //   .catch(err => {
+      //     this.isLoading = false
+      //     window.alert(err)
+      //   })
+
+      this.$router.push(dashboardMainPageRoute)
     },
 
-    isInvalidForm () {
+    isInvalidForm() {
       if (isIncompleteLoginForm(this.email, this.password)) {
         window.alert('Email or password are required!')
 

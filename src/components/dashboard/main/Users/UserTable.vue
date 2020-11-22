@@ -41,7 +41,7 @@
 import UserOptions from '@/components/dashboard/main/Users/UserOptions'
 import AddPatient from '@/components/dashboard/main/Users/AddPatient'
 import { palette } from '@/mixins/interface'
-import { getAllPatients } from '@/services/firebase'
+// import { getAllPatients } from '@/services/firebase'
 
 export default {
   name: 'UserTable',
@@ -51,7 +51,7 @@ export default {
   },
   mixins: [palette],
 
-  data () {
+  data() {
     return {
       tableHeaders: [
         {
@@ -81,8 +81,11 @@ export default {
     }
   },
 
-  firestore: {
-    users: getAllPatients()
+  created() {
+    console.log('fetch users from backend')
   }
+  // firestore: {
+  //   users: getAllPatients()
+  // }
 }
 </script>
