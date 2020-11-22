@@ -1,3 +1,5 @@
+// This file shall be retained for reference
+
 import { authenticator, firestore, Timestamp } from '@/plugins/firebase'
 
 const _DEFAULT_PASSWORD = '******'

@@ -12,7 +12,7 @@
         School of Computer Science and Engineering
       </p>
       <p class="text-center font-weight-light image-caption-subtitle">
-        50 Nanyang Ave, Singapore 639798
+        Singapore, Singapore
       </p>
     </v-container>
   </v-card>
