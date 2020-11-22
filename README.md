@@ -1,4 +1,11 @@
-# Zoomba
+<p align="center">
+  <img src="./src/assets/ZoombaSlogan.png" width="400"/>
+</p>
+
+<p align="center">
+  Logo created by <a href="https://github.com/MoiKeyboard">MoiKeyboard</a> <br/>
+  Slogan created by <a href="https://github.com/Agrotir">Agrotir</a>
+</p>
 
 ## Project Description
 The repository contains the web application source code for the landing page and Content Management System (CMS) dashboard. 
