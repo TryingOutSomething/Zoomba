@@ -9,7 +9,7 @@ export default [
       name: 'Landing Page',
       requiresAuth: false
     },
-    component: () => import(/* webpackChunkName: "landing" */ '@/views/LandingPage.vue')
+    component: () => import(/* webpackChunkName: "landing" */ '@/views/LandingPage')
   },
   {
     path: AUTH_PAGE_PATHS.MAIN,
@@ -17,7 +17,7 @@ export default [
       name: 'Login Page',
       requiresAuth: false
     },
-    component: () => import(/* webpackChunkName: "login" */ '@/views/LoginView.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '@/views/LoginView'),
     children: [
       {
         path: '',
