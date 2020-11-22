@@ -1,5 +1,7 @@
 <template>
   <div>
+    <view-player-rankings/>
+
     <v-col sm="6" md="5" lg="5" xl="3" class="mt-12 pb-0">
       <v-select
         v-model="selectedGame"
@@ -9,14 +11,14 @@
         return-object
         outlined
         dense
-        @change="getDataFirestore"
+        @change="getDataFromServer"
       />
     </v-col>
 
     <v-data-table
       class="px-3"
       :headers="tableHeaders"
-      :items="users"
+      :items="rankings"
       :loading="isLoading"
       loading-text="Loading Data..."
     >
@@ -42,7 +44,7 @@
           </td>
 
           <td class="text-end">
-            <ranking-options/>
+            <ranking-options :player-ranking="user"/>
           </td>
         </tr>
         </tbody>
@@ -53,13 +55,17 @@
 
 <script>
 import RankingOptions from '@/components/dashboard/main/Rankings/RankingOptions'
-// import { getGameRankings } from '@/services/firebase'
+import { mapActions, mapState } from 'vuex'
+import ViewPlayerRankings from '@/components/dashboard/main/Rankings/ViewPlayerRankings'
 
 export default {
   name: 'ScoreTable',
-  components: { RankingOptions },
+  components: {
+    ViewPlayerRankings,
+    RankingOptions
+  },
 
-  data () {
+  data() {
     return {
       games: [
         {
@@ -101,38 +107,26 @@ export default {
         }
       ],
 
-      isLoading: false,
-      users: []
-      // unsubscribeToChanges: null
+      isLoading: false
     }
   },
 
   created() {
-    this.getDataFirestore()
+    this.getDataFromServer()
   },
 
-  // beforeDestroy: async function () {
-  //   await this.unsubscribeToChanges()
-  // },
+  computed: {
+    ...mapState('scores', ['rankings'])
+  },
 
   methods: {
-    getDataFirestore() {
-      // this.isLoading = true
+    ...mapActions('scores', ['fetchPlayerRankings']),
 
-      // this.unsubscribeToChanges = getGameRankings(this.selectedGame.id).onSnapshot(querySnapShot => {
-      //   if (this.users.length > 0) {
-      //     this.users.splice(0, this.users.length)
-      //   }
-      //   querySnapShot.forEach(document => this.users.push(document.data()))
-      //
-      //   this.users.sort((a, b) => parseInt(a.score) > parseInt(b.score) ? -1 : 1)
-      //
-      //   this.isLoading = false
-      // }, err => {
-      //   window.alert(err.message)
-      //   this.isLoading = false
-      // })
-      console.log('fetch from backend')
+    getDataFromServer() {
+      this.isLoading = true
+      this.fetchPlayerRankings()
+        .catch(err => console.log(err))
+        .finally(this.isLoading = false)
     }
   }
 }
