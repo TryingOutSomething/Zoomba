@@ -35,8 +35,8 @@
 
 <script>
 import SnsIcons from '@/components/common/SnsIcons'
-import { loginRoute } from '@/utils/urls'
-import { logoutUser } from '@/services/firebase'
+// import { loginRoute } from '@/utils/urls'
+// import { logoutUser } from '@/services/firebase'
 
 export default {
   name: 'DrawerCompanyInfo',
